@@ -1,0 +1,66 @@
+UTENTI(nome, cognome,password, mail, PK:username )
+
+IMMAGINI(descrizione, data, PK:ID, username:UTENTI)
+
+SEGUE(PK: username:UTENTI, PK: username as username_seguito:UTENTI);
+
+LIKE(PK: username:UTENTI, PK: ID:UTENTI)
+
+COMMENTI(PK:ID, testo, ID:IMMAGINI, username:UTENTI)
+
+
+
+
+
+
+
+
+
+CREATE DATABASE Social;
+
+
+-- Tabella UTENTI
+CREATE TABLE UTENTI (
+    username VARCHAR(50) PRIMARY KEY,
+    nome VARCHAR(50),
+    cognome VARCHAR(50),
+    password VARCHAR(50),
+    mail VARCHAR(50)
+);
+
+-- Tabella IMMAGINI
+CREATE TABLE IMMAGINI (
+    ID INT PRIMARY KEY AUTO_INCREMENT,
+    descrizione TEXT,
+    data DATE,
+    username VARCHAR(50),
+    FOREIGN KEY (username) REFERENCES UTENTI(username)
+);
+
+-- Tabella SEGUE
+CREATE TABLE SEGUE (
+    username_utente VARCHAR(50),
+    username_seguito VARCHAR(50),
+    PRIMARY KEY (username_utente, username_seguito),
+    FOREIGN KEY (username_utente) REFERENCES UTENTI(username),
+    FOREIGN KEY (username_seguito) REFERENCES UTENTI(username)
+);
+
+-- Tabella LIKE
+CREATE TABLE LIKES (
+    username VARCHAR(50),
+    ID_immagine INT,
+    PRIMARY KEY (username, ID_immagine),
+    FOREIGN KEY (username) REFERENCES UTENTI(username),
+    FOREIGN KEY (ID_immagine) REFERENCES IMMAGINI(ID)
+);
+
+-- Tabella COMMENTI
+CREATE TABLE COMMENTI (
+    ID INT PRIMARY KEY AUTO_INCREMENT,
+    testo TEXT,
+    ID_immagine INT,
+    username VARCHAR(50),
+    FOREIGN KEY (ID_immagine) REFERENCES IMMAGINI(ID),
+    FOREIGN KEY (username) REFERENCES UTENTI(username)
+);
