@@ -3,7 +3,7 @@
 require_once("db/database.php");
 require_once("bootstrap.php");
 
-if (isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["mail"])) { //todo: aggiungere controlli
+
 
     echo "Registrazione in corso...<br>";
     $username = $_POST["username"];
@@ -20,14 +20,9 @@ if (isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["mail
         header("Refresh:0; url=registrati.html");
         echo "Verrai reindirizzato alla pagina di registrazione tra 5 secondi. Se non vuoi attendere <a href='registrazione.html'>clicca qui</a>";
     } else {
+        header("Refresh:0; url=index.html");
         echo '<script>alert("Registrazione avvenuta con successo!");</script>';
     }
-}else{
-    echo "Errore nella registrazione";
-}
-
-
-
 
 
 ?>
