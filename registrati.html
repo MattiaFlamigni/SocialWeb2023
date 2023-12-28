@@ -29,6 +29,7 @@
               <div class="mb-3">
                 <label for="name" class="form-label">Mail</label>
                 <input type="text" class="form-control" id="mail" name="mail" required>
+                <div id = "mail-check-result"></div>
               </div>
             <div class="mb-3">
               <label for="username" class="form-label">Username</label>
@@ -87,10 +88,11 @@
 <script>
   document.addEventListener("DOMContentLoaded", function() {
       let passwordInput = document.getElementById("password");
-      let passwordResult = document.getElementById("password-check-result");
+      let mail = document.getElementById("mail");
 
       passwordInput.addEventListener("input", function() {
-          var password = passwordInput.value;
+          let password = document.getElementById("password").value;
+          let passwordResult = document.getElementById("password-check-result");
 
           // La password deve contenere almeno un carattere maiuscolo e almeno un numero
           if (!/[A-Z]/.test(password) || !/\d/.test(password) || password.length < 8) {
@@ -98,6 +100,22 @@
               //document.getElementById("registrazioneBtn").disabled = false;
           } else {
               passwordResult.innerHTML = "";  // Resetta il messaggio se la password è valida
+              document.getElementById("registrazioneBtn").classList.remove("disabled");
+              
+          }
+      });
+
+
+      mail.addEventListener("input", function() {
+          let mail = document.getElementById("mail").value;
+          let mailResult = document.getElementById("mail-check-result");
+
+          
+          if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(mail)) {
+              mailResult.innerHTML = "Inserisci una mail valida";
+              //document.getElementById("registrazioneBtn").disabled = false;
+          } else {
+              mailResult.innerHTML = "";  // Resetta il messaggio se la password è valida
               document.getElementById("registrazioneBtn").classList.remove("disabled");
               
           }
