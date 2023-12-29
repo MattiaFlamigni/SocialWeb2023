@@ -94,6 +94,44 @@ class DatabaseHelper {
 
     }
     
+
+
+    public function getPostsByUser($username){
+        $stmt = $this->db->prepare("SELECT id FROM immagini WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();  
+
+        if ($result->num_rows == 0) {
+            // L'utente non ha post
+            return false;
+        }
+
+        $posts = array();
+        while($row = $result->fetch_assoc()){
+            $posts[] = $row;
+        }
+
+        //ritorno id delle immagini
+        return $posts;
+    }
+
+    public function getUserByUsername($username){
+        $stmt = $this->db->prepare("SELECT nome, cognome FROM utenti WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();  
+
+        if ($result->num_rows == 0) {
+            // L'utente non esiste
+            return false;
+        }
+
+        $user = $result->fetch_assoc();
+
+        
+        return $user;
+    }
     
 
 
