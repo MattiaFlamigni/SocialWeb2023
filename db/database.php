@@ -63,6 +63,36 @@ class DatabaseHelper {
         // Restituisci l'ID dell'utente appena inserito
         return $lastInsertedId;
     }
+
+
+
+    public function login($username, $password){
+        $stmt = $this->db->prepare("SELECT password FROM utenti WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();  
+
+
+        if ($result->num_rows == 0) {
+            // L'utente non esiste
+            return false;
+        }
+
+
+        // Ottiengo la password dell'utente dal risultato della query
+        $user = $result->fetch_assoc();
+        $passwordHash = $user["password"];
+
+        // Verifico se la password è corretta
+        if($passwordHash == $password){
+            // Password corretta
+            return true;
+        } else {
+            // Password errata
+            return false;
+        }
+
+    }
     
     
 
