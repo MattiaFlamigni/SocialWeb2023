@@ -13,6 +13,8 @@
             <script src="https://kit.fontawesome.com/3e59e20392.js" crossorigin="anonymous"></script>
             <link href="CSS/home.css" rel="stylesheet" type="text/css">
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+            <script src="JS\timeOutLogout.js"></script>
             
             <title><?php echo $templateParams["titolo"]; ?></title>
 
@@ -49,7 +51,7 @@
                                 <a class="nav-link" aria-current="page" href="likes.html"><i class="fa-solid fa-heart px-5"></i></a>
                                 <a class="nav-link" aria-current="page" href="createPost.html"><i class="fa-solid fa-plus fs-4"></i></a>
                                 <a class="nav-link" aria-current="page" href="search.html"><i class="fa-solid fa-search px-5"></i></a>                                    
-                                <a class="nav-link" aria-current="page" href="myProfile.php"><i class="fas fa-user "></i></a>
+                                <a class="nav-link" aria-current="page" href="../myProfile.php"><i class="fas fa-user "></i></a>
                             </div>
 
                             <!-- icona del logout -->
