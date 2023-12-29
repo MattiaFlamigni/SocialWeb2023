@@ -47,8 +47,10 @@
 
         <div class=" ">
             <div class="row row-cols-3">
-
-                <?php foreach ($templateParams["posts"] as $post) : ?>
+                
+                <?php 
+                if(!empty($templateParams["posts"])){
+                    foreach ($templateParams["posts"] as $post) : ?>
                 <div class="col"><img src="<?php echo UPLOAD_DIR.$post["id"]. '.jpeg' ?>" class="img-fluid rounded m-1"
                         data-like="10"></div>
                 <!--<div class="col"><img src="./img/amsterdam.jpeg" class="img-fluid rounded m-1" data-like="10"></div> !-->
@@ -71,6 +73,12 @@
                 </div>
 
             <?php endforeach; ?>
+
+            <?php } else{ ?>
+                <div class="mt-5 container justify-content-center">
+                    <h3>Non hai ancora postato nulla</h3>
+                </div>
+            <?php }  ?>
         </div>
 
     </main>
