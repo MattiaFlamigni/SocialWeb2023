@@ -51,7 +51,12 @@
                                 <a class="nav-link" aria-current="page" href="search.html"><i class="fa-solid fa-search px-5"></i></a>                                    
                                 <a class="nav-link" aria-current="page" href="myProfile.php"><i class="fas fa-user "></i></a>
                             </div>
-                        </div>
+
+                            <!-- icona del logout -->
+
+                            <a class="nav-link" aria-current="page" href="util/logout.php"><i class="fa-solid fa-right-from-bracket"></i></a>
+
+                        </div>"
                     </div>
                 </nav>    
             </footer>

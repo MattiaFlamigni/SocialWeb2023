@@ -1,7 +1,11 @@
 
-<body>
 
-    
+
+    <?php
+    if(!isset($_SESSION["username"])){
+        header("Location: ./index.php");
+        exit();
+    }?>
 
     <section class="d-flex justify-content-center">
         <div class="container-fluid mt-3">
@@ -12,7 +16,10 @@
 
             <div class="row row-cols-1 bg-body-tertiary col-md-9  mx-auto pb-3 pt-3">
                 <div class="col  text-center"><img src="img/user.jpg" class="rounded-circle" alt="utente" width="50"
-                        height="50"><label class=""><?php echo $templateParams["utente"]["nome"]." ". $templateParams["utente"]["cognome"] ;?> </label></div>
+                        height="50"><label class=""><?php 
+                                                    if(isset($templateParams["utente"]["nome"])){
+                                                        echo $templateParams["utente"]["nome"]." ". $templateParams["utente"]["cognome"];
+                                                    } ?>  </label></div>
 
             </div>
 
@@ -123,6 +130,3 @@
         });
       </script>
 
-</body>
-
-</html>
