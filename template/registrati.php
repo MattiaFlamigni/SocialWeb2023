@@ -55,7 +55,7 @@
             <button type="submit" id="registrazioneBtn" class="login-btn btn btn-primary ltext-white container-fluid disabled">Registrati</button>
           </form>
 
-          <a href="" class="">Login</a>
+          <a href="index.php" class="">Login</a>
         </div>
        
       </div>
