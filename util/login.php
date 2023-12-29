@@ -5,7 +5,7 @@ require_once("../bootstrap.php");
 
 
 
-    echo "Registrazione in corso...<br>";
+    echo "Login in corso...<br>";
     $username = $_POST["username"];
     $password = $_POST["password"];
 
