@@ -102,6 +102,7 @@ class DatabaseHelper {
         $stmt->execute();
         $result = $stmt->get_result();  
 
+        // TODO: rimuovi questo if e testa
         if ($result->num_rows == 0) {
             // L'utente non ha post
             return false;
@@ -109,6 +110,7 @@ class DatabaseHelper {
 
         $posts = array();
         while($row = $result->fetch_assoc()){
+            // TODO: integra con la classe Post (vedi db/post.php)
             $posts[] = $row;
         }
 
@@ -132,7 +134,23 @@ class DatabaseHelper {
         
         return $user;
     }
-    
+
+    // fetch posts liked by a user from the server
+    public function fetchLikedPosts($username) {
+        $stmt = $this->db->prepare("SELECT id FROM immagini WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $resut = $stmt->get_result();
+
+        $ids = explode('\n', $result)
+        $paths = []
+        foreach ($ids as $id) {
+            $paths[] = image_path($id)
+        }
+
+        return $paths
+    }
+
 
 
 
