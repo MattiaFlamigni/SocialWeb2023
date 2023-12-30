@@ -86,6 +86,10 @@ class DatabaseHelper {
         // Verifico se la password è corretta
         if($passwordHash == $password){
             // Password corretta
+            // TODO: Genera un cookie una volta che l'utente ha fatto il login e chiamalo "user".
+            //       L'ideale sarebbe di assegnare ad ogni utente un codice random univoco gestito sul server
+            //       e mettere quello come valore del cookie (molto più sicuro), ma per semplicità potremmo
+            //       semplicemente mettere l'username dell'utente.
             return true;
         } else {
             // Password errata
@@ -102,7 +106,7 @@ class DatabaseHelper {
         $stmt->execute();
         $result = $stmt->get_result();  
 
-        // TODO: rimuovi questo if e testa
+        // TODO: rimuovi questo if, probabilmente non serve (inoltre sarebbe buona prassi non restituire dati di tipo diverso)
         if ($result->num_rows == 0) {
             // L'utente non ha post
             return false;
@@ -135,17 +139,17 @@ class DatabaseHelper {
         return $user;
     }
 
-    // fetch posts liked by a user from the server
+    // fetch posts liked by a user from the server as URLs
     public function fetchLikedPosts($username) {
-        $stmt = $this->db->prepare("SELECT id FROM immagini WHERE username = ?");
+        $stmt = $this->db->prepare("SELECT id, username, descrizione, data FROM immagini JOIN like ON like.id = immagini.id WHERE like.username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
-        $resut = $stmt->get_result();
+        $stmt->bind_result($id, $user, $desc, $date);
 
-        $ids = explode('\n', $result)
-        $paths = []
-        foreach ($ids as $id) {
-            $paths[] = image_path($id)
+        $posts = []
+        while ($stmt->fetch()) {
+            // TODO: add user picture instead of "#"
+            $posts[] = new Post(image_url($id), $user, "#", $desc, $date)
         }
 
         return $paths
