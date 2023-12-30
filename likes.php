@@ -13,6 +13,37 @@
 		<h1> Post a cui hai messo Mi Piace </h1>
 	</div>
 
+<?php
+// this exposes the $dbh variable (object of DatabaseHelper), check the DatabaseHelper class in db/database.php for more info
+require_once 'bootstrap.php';
+
+require_once 'util/images.php';
+
+$posts = $dbh->fetchLikedPosts($_COOKIE['user']);
+foreach ($posts as $post) {
+	$imgpath = image_path($post->image_id)
+	$propic = image_path($post->profile_image_id)
+	echo <<<EOS
+	<div class="d-flex justify-content-center my-4">
+		<div class="card" style="max-width: 50em;">
+			<img src="$imgpath" class="card-img-top" alt="...">
+			<div class="card-body container">
+				<div class="row">
+					<div class="col me-3" style="max-width: 4em;">
+						<img src="$propic" class="rounded-circle object-fit-cover" style="float: left; width: 4em; height: 4em;">
+					</div>
+					<div class="col">
+						<h5 class="card-title">@$post->username</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	EOS;
+}
+
+?>
+<!--
 	<div class="d-flex justify-content-center my-4">
 		<div class="card" style="max-width: 50em;">
 			<img src="img/amsterdam.jpeg" class="card-img-top" alt="...">
@@ -73,6 +104,7 @@
 			</div>
 		</div>
 	</section>
+-->
 
 	<footer class="w-100 text-center mt-5 pt-5">
 		<nav class="navbar navbar-expand-lg bg-body-tertiary navbar-expand fixed-bottom ">
