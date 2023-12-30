@@ -1,5 +1,8 @@
 <?php
 
+
+//TODO: Sse username ok e password ko, viene visto come utente non registrato
+
 require_once("../db/database.php");
 require_once("../bootstrap.php");
 
