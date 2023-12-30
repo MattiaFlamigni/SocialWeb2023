@@ -104,13 +104,7 @@ class DatabaseHelper {
         $stmt = $this->db->prepare("SELECT id FROM immagini WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
-        $result = $stmt->get_result();  
-
-        // TODO: rimuovi questo if, probabilmente non serve (inoltre sarebbe buona prassi non restituire dati di tipo diverso)
-        if ($result->num_rows == 0) {
-            // L'utente non ha post
-            return false;
-        }
+        $result = $stmt->get_result(); 
 
         $posts = array();
         while($row = $result->fetch_assoc()){
@@ -146,13 +140,13 @@ class DatabaseHelper {
         $stmt->execute();
         $stmt->bind_result($id, $user, $desc, $date);
 
-        $posts = []
+        $posts = [];
         while ($stmt->fetch()) {
             // TODO: add user picture instead of "#"
-            $posts[] = new Post(image_url($id), $user, "#", $desc, $date)
+            $posts[] = new Post(image_url($id), $user, "#", $desc, $date);
         }
 
-        return $paths
+        return $paths;
     }
 
 
