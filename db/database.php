@@ -146,7 +146,7 @@ class DatabaseHelper {
             $posts[] = new Post(image_url($id), $user, "#", $desc, $date);
         }
 
-        return $paths;
+        return $posts;
     }
 
 
