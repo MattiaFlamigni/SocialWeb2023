@@ -100,7 +100,19 @@ class DatabaseHelper {
 
     }*/
 
+    public function userExists($username) {
+        $stmt = $this->db->prepare("SELECT username FROM utenti WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();  
 
+        if ($result->num_rows == 0) {
+            // L'utente non esiste
+            return false;
+        }
+
+        return true;
+    }
 
     public function login($username, $password) {
         $stmt = $this->db->prepare("SELECT password FROM utenti WHERE username = ?");

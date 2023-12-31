@@ -1,8 +1,5 @@
 <?php
 
-
-//TODO: Sse username ok e password ko, viene visto come utente non registrato
-
 require_once("../db/database.php");
 require_once("../bootstrap.php");
 
@@ -14,11 +11,20 @@ require_once("../bootstrap.php");
     $password = $_POST["password"];
 
     $result = $dbh->login($username, $password);
-    if ($result === false) {
+    $exists = $dbh->userExists($username);
+
+    if($exists === false){
         echo '<script>alert("Utente non registrato!");</script>';
  
         header("Refresh:0; url=../registrati.php");
-        echo "Verrai reindirizzato alla pagina di registrazione tra 5 secondi. Se non vuoi attendere <a href='registrazione.html'>clicca qui</a>";
+
+        exit();
+    }
+
+    if ($result === false) {
+        echo '<script>alert("Password errata!");</script>';
+ 
+        header("Refresh:0; url=../index.php");
     } else {
 
         $_SESSION["username"] = $username;
