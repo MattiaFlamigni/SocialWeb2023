@@ -108,7 +108,7 @@ class DatabaseHelper {
 
         $posts = array();
         while($row = $result->fetch_assoc()){
-            // TODO: integra con la classe Post (vedi db/post.php)
+            // TODO: usa la classe Post (vedi db/post.php) così da restituire gli oggetti di tale classe invece degli ID delle immagini
             $posts[] = $row;
         }
 
