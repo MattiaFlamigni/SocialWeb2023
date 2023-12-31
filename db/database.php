@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+include ("post.php");
 class DatabaseHelper {
     private $db;
 
@@ -66,7 +68,7 @@ class DatabaseHelper {
 
 
 
-    public function login($username, $password){
+    /*public function login($username, $password){
         $stmt = $this->db->prepare("SELECT password FROM utenti WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
@@ -96,7 +98,42 @@ class DatabaseHelper {
             return false;
         }
 
+    }*/
+
+
+
+    public function login($username, $password) {
+        $stmt = $this->db->prepare("SELECT password FROM utenti WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        if ($result->num_rows == 0) {
+            // L'utente non esiste
+            return false;
+        }
+    
+        // Ottengo la password dell'utente dal risultato della query
+        $user = $result->fetch_assoc();
+        $passwordHash = $user["password"];
+    
+        // Verifico se la password è corretta
+        if ($passwordHash == $password) {
+            // Password corretta
+    
+            
+            $cookieValue = $username;
+    
+            // Imposta il cookie con una durata di 1 giorno 
+            setcookie("user", $cookieValue, time() + (86400 * 1), "/");
+    
+            return true;
+        } else {
+            // Password errata
+            return false;
+        }
     }
+    
     
 
 
@@ -149,6 +186,36 @@ class DatabaseHelper {
         return $paths;
     }
 
+
+
+    public function searchQuery($userInput) {
+            
+        
+            // Aggiungi i wildcards % agli input dell'utente
+            $userInputWithWildcards = '%' . $userInput . '%';
+
+            // Prepara la query
+            $stmt = $this->db->prepare("SELECT username, nome, cognome FROM utenti WHERE username LIKE ? AND username != ?");
+            $stmt->bind_param("ss", $userInputWithWildcards, $_SESSION["username"]);
+            $stmt->execute();
+        
+            // Ottieni il risultato della query
+            $result = $stmt->get_result();
+        
+            // Array per immagazzinare i risultati
+            $searchResults = array();
+        
+            // Loop attraverso i risultati e aggiungili all'array
+            while ($row = $result->fetch_assoc()) {
+                $searchResults[] = $row;
+            }
+        
+            // Chiudi la connessione e il risultato della query
+            $stmt->close();
+
+
+            return $searchResults;
+        }
 
 
 
