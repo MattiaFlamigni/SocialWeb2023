@@ -224,7 +224,51 @@ class DatabaseHelper {
 
 
 
+    public function followUser($username, $userToFollow) {
+        $stmt = $this->db->prepare("INSERT INTO segue (username_utente, username_seguito) VALUES (?, ?)");
+        $stmt->bind_param("ss", $username, $userToFollow);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
+        if ($result->num_rows == 0) {
+    
+            return false;
+        }
+
+        return true;
+
+
+    }
+
+
+    public function isFollowing($username, $userToFollow) {
+        $stmt = $this->db->prepare("SELECT * FROM segue WHERE username_utente = ? AND username_seguito = ?");
+        $stmt->bind_param("ss", $username, $userToFollow);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows == 0) {
+    
+            return false;
+        }
+
+        return true;
+    }
+
+
+    public function unfollowUser($username, $userToFollow) {
+        $stmt = $this->db->prepare("DELETE FROM segue WHERE username_utente = ? AND username_seguito = ?");
+        $stmt->bind_param("ss", $username, $userToFollow);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows == 0) {
+    
+            return false;
+        }
+
+        return true;
+    }
 
 
 
