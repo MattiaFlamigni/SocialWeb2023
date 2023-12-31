@@ -5,7 +5,7 @@
             <nav class="mt-3">
                 <form class="d-flex">
                     <input id="search-input"  class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-light" type="submit"><i class="fas fa-search"></i></button>
+                    <button class="btn btn-outline-light disabled" type="submit"><i class="fas fa-search"></i></button>
                 </form>
             </nav>
         </div>
