@@ -8,22 +8,23 @@
     }?>
 
     <section class="d-flex justify-content-center">
-        <div class="container-fluid mt-3">
+        <div class="container-fluid mt-3 col-md-12">
             <!-- <div class="rounded-top bg-body-tertiary col-12 col-md-9 mx-auto">
                 
                     <img src="img/user.jpg" class="rounded-circle  ms-5 mt-3" alt="utente" width="50" height="50"> Diego Ciprianetti
             </div><!-->
 
-            <div class="row row-cols-1 bg-body-tertiary col-md-9  mx-auto pb-3 pt-3">
+            <div class="row row-cols-1 bg-body-tertiary col-md-9  mx-auto pb-3 pt-3" >
                 <div class="col  text-center"><img src="img/user.jpg" class="rounded-circle" alt="utente" width="50"
                         height="50"><label class=""><?php 
                                                     if(isset($templateParams["utente"]["nome"])){
                                                         echo $templateParams["utente"]["nome"]." ". $templateParams["utente"]["cognome"];
-                                                    } ?>  </label></div>
+                                                    } ?>  </label>
+                </div>
 
             </div>
 
-            <div class="container-fluid text-center bg-body-tertiary col-12 col-md-9 mx-auto">
+            <div class="container-fluid text-center bg-body-tertiary col-12 col-md-9 mx-auto" >
                 <div class="row">
                     <div class="col order-first border-end border-2">
                         <?php echo $templateParams["numPost"]; ?>
@@ -50,7 +51,7 @@
         </div>
     </section>
 
-    <main class="container-fluid text-center bg-body-tertiary col-12 col-md-9">
+    <main class="container text-center bg-body-tertiary col-11 col-md-9">
 
         <div class=" ">
             <div class="row row-cols-3">
