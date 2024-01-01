@@ -26,13 +26,13 @@
             <div class="container-fluid text-center bg-body-tertiary col-12 col-md-9 mx-auto">
                 <div class="row">
                     <div class="col order-first border-end border-2">
-                        1532
+                        <?php echo $templateParams["numPost"]; ?>
                     </div>
                     <div class="col border-end border-2">
-                        4310
+                        <?php echo $templateParams["numFollowers"]; ?>
                     </div>
                     <div class="col order">
-                        1310
+                        <?php echo $templateParams["numFollowing"]; ?>
                     </div>
                 </div>
                 <div class="row">

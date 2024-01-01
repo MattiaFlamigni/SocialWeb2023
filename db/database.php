@@ -283,6 +283,52 @@ class DatabaseHelper {
     }
 
 
+    public function getNumPosts($username) {
+        $stmt = $this->db->prepare("SELECT COUNT(*) FROM immagini WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows == 0) {
+    
+            return 0;
+        }
+
+        $row = $result->fetch_assoc();
+        return $row["COUNT(*)"];
+    }
+
+    public function getNumFollowing($username) {
+        $stmt = $this->db->prepare("SELECT COUNT(*) FROM segue WHERE username_utente = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows == 0) {
+    
+            return 0;
+        }
+
+        $row = $result->fetch_assoc();
+        return $row["COUNT(*)"];
+    }
+
+    public function getNumFollowers($username) {
+        $stmt = $this->db->prepare("SELECT COUNT(*) FROM segue WHERE username_seguito = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows == 0) {
+    
+            return 0;
+        }
+
+        $row = $result->fetch_assoc();
+        return $row["COUNT(*)"];
+    }
+
+
 
 
 }
