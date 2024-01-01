@@ -374,6 +374,38 @@ class DatabaseHelper {
         return $row["nome"];
     }
 
+    public function getFollowing($username) {
+        $stmt = $this->db->prepare("SELECT username_seguito FROM segue WHERE username_utente = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $following = array();
+        while($row = $result->fetch_assoc()){
+
+            $following[] = $row;
+        }
+
+        return $following;
+
+    }
+
+    public function getFollowers() {
+        $stmt = $this->db->prepare("SELECT username_utente FROM segue WHERE username_seguito = ?");
+        $stmt->bind_param("s", $_SESSION["username"]);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $followers = array();
+        while($row = $result->fetch_assoc()){
+
+            $followers[] = $row;
+        }
+
+        return $followers;
+
+    }
+
 }
 
 

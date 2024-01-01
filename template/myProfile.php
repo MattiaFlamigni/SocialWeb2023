@@ -41,10 +41,10 @@
                         Posts
                     </div>
                     <div class="col">
-                        Followers
+                        <a href="showProfile.php?type=followers">Followers</a>
                     </div>
                     <div class="col order-last">
-                        Following
+                        <a href="showProfile.php?type=following">Following</a>
                     </div>
                 </div>
             </div>
