@@ -48,10 +48,10 @@
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div class="navbar-nav mx-auto">
                                 <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-house"></i></a>
-                                <a class="nav-link" aria-current="page" href="likes.html"><i class="fa-solid fa-heart px-5"></i></a>
-                                <a class="nav-link" aria-current="page" href="createPost.html"><i class="fa-solid fa-plus fs-4"></i></a>
-                                <a class="nav-link" aria-current="page" href="search.html"><i class="fa-solid fa-search px-5"></i></a>                                    
-                                <a class="nav-link" aria-current="page" href="../myProfile.php"><i class="fas fa-user "></i></a>
+                                <a class="nav-link" aria-current="page" href="likes.php"><i class="fa-solid fa-heart px-5"></i></a>
+                                <a class="nav-link" aria-current="page" href="createPost.php"><i class="fa-solid fa-plus fs-4"></i></a>
+                                <a class="nav-link" aria-current="page" href="search.php"><i class="fa-solid fa-search px-5"></i></a>                                    
+                                <a class="nav-link" aria-current="page" href="myProfile.php"><i class="fas fa-user "></i></a>
                             </div>
 
                             <!-- icona del logout -->

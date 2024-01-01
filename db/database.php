@@ -229,6 +229,21 @@ class DatabaseHelper {
             return $searchResults;
         }
 
+        public function fetchHomePosts($username) {
+            $stmt = $this->db->prepare("SELECT id, descrizione, data FROM immagini WHERE username in (SELECT username_seguito FROM segue WHERE username_utente = $_SESSION[username])");
+            $stmt->bind_param("s", $username);
+            $stmt->execute();
+            $stmt->bind_result($id, $user, $desc, $date);
+    
+            $posts = [];
+            while ($stmt->fetch()) {
+                // TODO: add user picture instead of "#"
+                $posts[] = new Post(image_url($id), $user, "#", $desc, $date);
+            }
+    
+            return $posts;
+        }
+
 
 
 
