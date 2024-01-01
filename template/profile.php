@@ -115,7 +115,7 @@
 
             <?php } else{ ?>
                 <div class="mt-5 container justify-content-center">
-                    <h3>Non hai ancora postato nulla</h3>
+                    <h3>Nessun Post </h3>
                 </div>
             <?php }  ?>
         </div>
