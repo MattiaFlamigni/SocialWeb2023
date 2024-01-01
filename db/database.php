@@ -100,7 +100,19 @@ class DatabaseHelper {
 
     }*/
 
+    public function userExists($username) {
+        $stmt = $this->db->prepare("SELECT username FROM utenti WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();  
 
+        if ($result->num_rows == 0) {
+            // L'utente non esiste
+            return false;
+        }
+
+        return true;
+    }
 
     public function login($username, $password) {
         $stmt = $this->db->prepare("SELECT password FROM utenti WHERE username = ?");
@@ -239,10 +251,143 @@ class DatabaseHelper {
 
 
 
+    public function followUser($username, $userToFollow) {
+        $stmt = $this->db->prepare("INSERT INTO segue (username_utente, username_seguito) VALUES (?, ?)");
+        $stmt->bind_param("ss", $username, $userToFollow);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows == 0) {
+    
+            return false;
+        }
+
+        return true;
 
 
+    }
 
 
+    public function isFollowing($username, $userToFollow) {
+        $stmt = $this->db->prepare("SELECT * FROM segue WHERE username_utente = ? AND username_seguito = ?");
+        $stmt->bind_param("ss", $username, $userToFollow);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows == 0) {
+    
+            return false;
+        }
+
+        return true;
+    }
+
+
+    public function unfollowUser($username, $userToFollow) {
+        $stmt = $this->db->prepare("DELETE FROM segue WHERE username_utente = ? AND username_seguito = ?");
+        $stmt->bind_param("ss", $username, $userToFollow);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows == 0) {
+    
+            return false;
+        }
+
+        return true;
+    }
+
+
+    public function getNumPosts($username) {
+        $stmt = $this->db->prepare("SELECT COUNT(*) FROM immagini WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows == 0) {
+    
+            return 0;
+        }
+
+        $row = $result->fetch_assoc();
+        return $row["COUNT(*)"];
+    }
+
+    public function getNumFollowing($username) {
+        $stmt = $this->db->prepare("SELECT COUNT(*) FROM segue WHERE username_utente = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows == 0) {
+    
+            return 0;
+        }
+
+        $row = $result->fetch_assoc();
+        return $row["COUNT(*)"];
+    }
+
+    public function getNumFollowers($username) {
+        $stmt = $this->db->prepare("SELECT COUNT(*) FROM segue WHERE username_seguito = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows == 0) {
+    
+            return 0;
+        }
+
+        $row = $result->fetch_assoc();
+        return $row["COUNT(*)"];
+    }
+
+    public function getNumLikeToPost($id) {
+        $stmt = $this->db->prepare("SELECT COUNT(*) FROM likes WHERE ID_immagine = ?");
+        $stmt->bind_param("s", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows == 0) {
+    
+            return 0;
+        }
+
+        $row = $result->fetch_assoc();
+        return $row["COUNT(*)"];
+    }
+
+
+    public function getMailFromUser($username) {
+        $stmt = $this->db->prepare("SELECT mail FROM utenti WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows == 0) {
+    
+            return 0;
+        }
+
+        $row = $result->fetch_assoc();
+        return $row["mail"];
+    }
+
+    public function getNomeByUsername($username) {
+        $stmt = $this->db->prepare("SELECT nome FROM utenti WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows == 0) {
+    
+            return 0;
+        }
+
+        $row = $result->fetch_assoc();
+        return $row["nome"];
+    }
 
 }
 

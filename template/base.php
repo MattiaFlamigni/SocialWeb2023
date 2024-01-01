@@ -58,7 +58,7 @@
 
                             <a class="nav-link" aria-current="page" href="util/logout.php"><i class="fa-solid fa-right-from-bracket"></i></a>
 
-                        </div>"
+                        </div>
                     </div>
                 </nav>    
             </footer>

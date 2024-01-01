@@ -14,7 +14,7 @@ foreach ($searchResults as $row) {
                 </div>
                 <div class="col-md-10">
                     <div class="card-body">
-                        <h3 class="card-title"><a href="profile.html" class="text-decoration-none text-dark">' . $row["username"] . '</a></h3>
+                    <h3 class="card-title"><a href="profile.php?username=' . $row["username"] . '" class="text-decoration-none text-dark">' . $row["username"] . '</a></h3>
                         <p class="card-text">' . $row["nome"] . ' ' . $row["cognome"] . '</p>
                     </div>
                 </div>
