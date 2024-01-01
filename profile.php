@@ -16,6 +16,10 @@ if (isset($_GET['username'])) {
     $templateParams["posts"] = $dbh->getPostsByUser($username);
     $templateParams["utente"] = $dbh->getUserByUsername($username);
 
+    $templateParams["numPost"] = $dbh->getNumPosts($username);
+    $templateParams["numFollowing"] = $dbh->getNumFollowing($username);
+    $templateParams["numFollowers"] = $dbh->getNumFollowers($username);
+
     require("template/base.php");
 } else {
     // Se l'username non è presente nei parametri di query, gestisci l'errore o reindirizza l'utente
