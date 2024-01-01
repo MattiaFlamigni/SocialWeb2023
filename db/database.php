@@ -328,8 +328,20 @@ class DatabaseHelper {
         return $row["COUNT(*)"];
     }
 
+    public function getNumLikeToPost($id) {
+        $stmt = $this->db->prepare("SELECT COUNT(*) FROM likes WHERE ID_immagine = ?");
+        $stmt->bind_param("s", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
+        if ($result->num_rows == 0) {
+    
+            return 0;
+        }
 
+        $row = $result->fetch_assoc();
+        return $row["COUNT(*)"];
+    }
 
 }
 
