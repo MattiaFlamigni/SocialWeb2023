@@ -139,12 +139,6 @@
   });
 </script>
 
-
-
-</script>
-
-
-
 <script src="JS\checkPassword.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
