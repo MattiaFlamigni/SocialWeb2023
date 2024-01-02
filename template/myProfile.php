@@ -16,7 +16,7 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="#">Reset Password</a>
+                <a class="nav-link" href="changePassword.php">Reset Password</a>
             </li>
         </ul>
     </div>

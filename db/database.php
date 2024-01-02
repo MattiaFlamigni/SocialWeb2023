@@ -429,7 +429,7 @@ class DatabaseHelper {
         $stmt->execute();
         $result = $stmt->get_result();
 
-        if ($result) {
+        if ($result ) {
     
             return false;
         }
