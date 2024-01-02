@@ -20,7 +20,7 @@
     background-color: #6a2c70;
   }
 </style>
-<div class="container pt-5">
+<div class="container pt-1">
   <div class="row justify-content-center">
     <div class="col-md-6 login-container bg-transparent rounded overflow-hidden" style="max-width: 400px;">
       <div class="card">
@@ -52,6 +52,10 @@
               <input type="password" class="form-control" id="password" name="password" required>
               <div id="password-check-result"></div>
             </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Conferma Password</label>
+              <input type="password" class="form-control" id="password2" name="password" required>
+              <div id="password2-check-result"></div>
             <button type="submit" id="registrazioneBtn" class="login-btn btn btn-primary ltext-white container-fluid disabled">Registrati</button>
           </form>
 
@@ -132,6 +136,30 @@
           }
       });
   });
+</script>
+
+<script>
+  //controlla che le due password siano uguali
+  document.addEventListener("DOMContentLoaded", function() {
+      let passwordInput = document.getElementById("password");
+      let passwordInput2 = document.getElementById("password2");
+
+      passwordInput2.addEventListener("input", function() {
+          let password = document.getElementById("password").value;
+          let password2 = document.getElementById("password2").value;
+          let passwordResult = document.getElementById("password2-check-result");
+
+          if (password != password2) {
+              passwordResult.innerHTML = "<strong>Le password non coincidono</strong>";
+              
+          } else {
+              passwordResult.innerHTML = "";  // Resetta il messaggio se la password è valida
+              
+              
+          }
+      });
+  });
+
 </script>
 
 
