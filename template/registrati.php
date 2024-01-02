@@ -85,9 +85,9 @@
 
                   // Disabilita il bottone se l'username è già in uso
                 if (xhr.responseText.includes("in uso")) {
-                    registrazioneBtn.disabled = true;
+                    document.getElementById("registrazioneBtn").classList.add("disabled");
                 } else {
-                    registrazioneBtn.disabled = false;
+                    
                 }
               }
           };
@@ -115,7 +115,8 @@
               //document.getElementById("registrazioneBtn").disabled = false;
           } else {
               passwordResult.innerHTML = "";  // Resetta il messaggio se la password è valida
-              document.getElementById("registrazioneBtn").classList.remove("disabled");
+              //document.getElementById("registrazioneBtn").classList.remove("disabled");
+              
               
           }
       });
@@ -154,6 +155,7 @@
               
           } else {
               passwordResult.innerHTML = "";  // Resetta il messaggio se la password è valida
+              document.getElementById("registrazioneBtn").classList.remove("disabled");
               
               
           }
