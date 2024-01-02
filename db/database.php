@@ -475,28 +475,61 @@ class DatabaseHelper {
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
-    
         if ($result->num_rows == 0) {
-    
             return false;
         }
-    
         $row = $result->fetch_assoc();
-
         if($row["password"] == $oldPassword){
             return true;
         } else {
             return false;
-        }
-        
+        }    
     }
-    
-    
+
+    public function isLiked($username, $post) {
+        $stmt = $this->db->prepare("SELECT * FROM likes WHERE username_utente = ? AND ID_Immagine = ?");
+        $stmt->bind_param("ss", $username, $post);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows == 0) {
+            return false;
+        }
+        return true;
+    }
+
+    public function likePost($username, $post) {
+        $stmt = $this->db->prepare("INSERT INTO likes (username, ID_Immagine) VALUES (?, ?)");
+        $stmt->bind_param("ss", $username, $post);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows == 0) {
+            return false;
+        }
+        return true;
+    }
+
+    public function removeLike($username, $post) {
+        $stmt = $this->db->prepare("DELETE FROM likes WHERE username = ? AND ID_Immagine = ?");
+        $stmt->bind_param("ss", $username, $post);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows == 0) {
+            return false;
+        }
+        return true;
+    }
+
+    public function getNomeByPost($post) {
+        $stmt = $this->db->prepare("SELECT UTENTI.nome FROM UTENTI JOIN IMMAGINI ON UTENTI.username = IMMAGINI.username WHERE IMMAGINI.ID = ?")
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows == 0) {
+            return 0;
+        }
+        $row = $result->fetch_assoc();
+        return $row["nome"];
+    }
 }
-
-
-
-
-
 
 ?>
