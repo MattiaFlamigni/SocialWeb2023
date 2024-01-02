@@ -1,4 +1,3 @@
-
 <style>
   body {
     background: linear-gradient(45deg, #2d6d84, #9d4edd);
@@ -21,36 +20,40 @@
     background-color: #6a2c70;
   }
 </style>
-
-<div class="container pt-2 mt-5">
+<div class="container pt-1">
   <div class="row justify-content-center">
     <div class="col-md-6 login-container bg-transparent rounded overflow-hidden" style="max-width: 400px;">
       <div class="card">
         <div class="card-header login-card-header p-20 text-center text-white bg-dark">
-          <h4>Login</h4>
+          <h4>Recupera Username</h4>
         </div>
         <div class="card-body login-form px-20">
-          <form action="util\login.php" method="POST">
-            <div class="mb-3">
-              <label for="username" class="form-label">Username</label>
-              <input type="text" class="form-control" id="username" name="username" required>
-            </div>
+          <form action="util\recover-username.php" method="POST">
+            
+              <div class="mb-3">
+                <label for="mail" class="form-label">Mail</label>
+                <input type="text" class="form-control" id="mail" name="mail" required>
+                
+              </div>
+            
             <div class="mb-3">
               <label for="password" class="form-label">Password</label>
               <input type="password" class="form-control" id="password" name="password" required>
+              
             </div>
-            <button type="submit" class="login-btn btn btn-primary ltext-white container-fluid">Login</button>
+            
+            <button type="submit" id="" class="login-btn btn btn-primary ltext-white container-fluid">Invia Username tramite mail</button>
           </form>
 
-          <div class="mt-3">
-            <p><a href="registrati.php" class="text-decoration-none">Don't have an account? Register here</a></p>
-            <p><a href="recovery.php" class="text-decoration-none ">Forgot password?</a></p>
-            <p><a href="recoveryUser.php" class="text-decoration-none ">Forgot Username?</a></p>
+          <a href="index.php" class="">Login</a>
         </div>
        
       </div>
     </div>
   </div>
 </div>
+
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

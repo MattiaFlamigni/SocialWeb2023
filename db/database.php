@@ -437,7 +437,26 @@ class DatabaseHelper {
         return true;
         
     }
+
+
+    public function recoverUser($mail, $password){
+        $stmt = $this->db->prepare("SELECT username FROM utenti WHERE mail = ? AND password = ?");
+        $stmt->bind_param("ss", $mail, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        if ($result->num_rows == 0) {
+    
+            return false;
+        }
+    
+        $row = $result->fetch_assoc();
+        return $row["username"];
+        
+    }
 }
+
+
 
 
 
