@@ -32,7 +32,7 @@ require_once("../bootstrap.php");
 
         $_SESSION["username"] = $username;
         
-        header("Refresh:0; url=../mainFeed.html");
+        header("Refresh:0; url=../mainFeed.php");
         
     }
 
