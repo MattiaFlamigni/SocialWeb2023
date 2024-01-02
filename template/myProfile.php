@@ -7,6 +7,21 @@
         exit();
     }?>
 
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Reset Password</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
     <section class="d-flex justify-content-center">
         <div class="container-fluid mt-3 col-md-12">
             <!-- <div class="rounded-top bg-body-tertiary col-12 col-md-9 mx-auto">
@@ -91,24 +106,7 @@
 
     </main>
 
-    <footer class="bg-body-tertiary w-100 text-center mt-5 pt-5">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-expand fixed-bottom ">
-            <div class="container-fluid">
-
-                <!-- Rimuovi il bottone del toggler -->
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav mx-auto">
-                        <a class="nav-link" aria-current="page" href="./mainFeed.html"><i
-                                class="fa-solid fa-house"></i></a>
-                        <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-heart px-5"></i></a>
-                        <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-plus fs-4"></i></a>
-                        <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-search px-5"></i></a>
-                        <a class="nav-link" aria-current="page" href="./profile.html"><i class="fas fa-user "></i></a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </footer>
+    
 
 
     <script>
@@ -130,4 +128,29 @@
           });
         });
       </script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Your existing script -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const imageDetailsModal = new bootstrap.Modal(document.getElementById('imageDetails'));
+        const selectedImage = document.getElementById('selectedImage');
+        const likeNumber = document.getElementById('likeNumber');
+
+        // Aggiungi un gestore di eventi clic a tutte le immagini
+        const images = document.querySelectorAll('.img-fluid');
+        images.forEach(function (image) {
+            image.addEventListener('click', function () {
+                // Mostra l'immagine e il numero di like nella finestra modale
+                const likeCount = this.getAttribute('data-like') || 0;
+                selectedImage.src = this.src;
+                likeNumber.textContent = likeCount;
+                imageDetailsModal.show();
+            });
+        });
+    });
+</script>
 
