@@ -69,7 +69,27 @@ function post_form_error() {
 }
 
 function new_image_id() {
-	// TODO
+	global $imgdir;
+	$files = scandir($imgdir);
+	for ($i = 0; $i < count($files); $i++) {
+		// remove file extensions
+		$files[$i] = preg_replace('\\..+$', '', $files[$i]);
+	}
+	$newID = '000000';
+	while (in_array($newID, $files)) {
+		// increment ID
+		$newID = (string) (((int) $newID) + 1);
+	}
+
+	return $newID;
+}
+
+// $ext can be 'png', 'jpeg', etc.
+function upload_image($id, $ext, $bytes) {
+	global $imgdir;
+	$newImage = fopen("$id.$ext", "w");
+	fwrite($newImage, $bytes);
+	fclose($newImage);
 }
 
 function image_url($id) {
