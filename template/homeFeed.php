@@ -1,3 +1,10 @@
+<?php
+    require_once("bootstrap.php");
+    if(!isset($_SESSION["username"])){
+        header("Location: ./index.php");
+        exit();
+    }?>
+    
     <!doctype html>
     <html lang="it">
         <head>
@@ -20,37 +27,27 @@
         </head>
         <body>
     
+
+        
             <header class="container d-flex justify-content-between align-items-center">
                 <h1>Web</h1>
-            </header>  
-            <main>  
-                <section class="d-flex justify-content-center text-center">
+            </header> 
+
+            <main>
+            <?php
+                $posts = $dbh->fetchHomePosts($_SESSION["username"]);
+                if(!empty($posts)) {
+                    foreach ($posts as $post) : ?>
+                        <section class="d-flex justify-content-center text-center">
                     <div class="container-fluid mt-3">
                         <div class="rounded-top border bg-body-tertiary col-12 col-md-7 mx-auto">
-                            <!-- Utente che ha condiviso la foto -->
-                            <img src="img/user.jpg" class="rounded-circle " alt="utente" width="50" height="50"> Username
+                            <img src="img/<?php echo $post["username"]?>.jpg" class="rounded-circle" alt="<?php echo $post["username"]?>" width="50" height="50"> <?php echo $post["username"]?>
                         </div>
                         <div class="">
                             <div class="">
-                                <img src="img/amsterdam.jpeg" class="img-fluid rounded-bottom col-md-7 " alt="">
+                                <img src="img/<?php echo $post["id"] ?>.jpeg" class="img-fluid rounded-bottom col-md-7 " alt="">
                             </div>
                         </div>
-                    </div>
-                </section>
-
-
-                <section class="d-flex justify-content-center text-center">
-                    <div class="container-fluid mt-3">
-                        <div class="rounded-top border bg-body-tertiary col-12 col-md-7 mx-auto">
-                            <!-- Utente che ha condiviso la foto -->
-                            <img src="img/user.jpg" class="rounded-circle" alt="utente" width="50" height="50"> Username
-                        </div>
-                        <div class="">
-                            <div class="">
-                                <img src="img/amsterdam.jpeg" class="img-fluid rounded-bottom col-md-7 " alt="">
-                            </div>
-                        </div>
-                        <!--icona dei like con il numero e icona del commento-->
                         <div class="d-flex justify-content-between col-md-7 container-fluid bg-body-tertiary pt-2">
                             <div class="d-flex">
                                 <button type="button" class="btn">
@@ -66,21 +63,9 @@
                         </div>
                     </div>
                 </section>
-                
 
-                <section class="d-flex justify-content-center text-center">
-                    <div class="container-fluid mt-3">
-                        <div class="rounded-top border bg-body-tertiary col-12 col-md-7 mx-auto">
-                            <!-- Utente che ha condiviso la foto -->
-                            <img src="img/user.jpg" class="rounded-circle " alt="utente" width="50" height="50"> Username
-                        </div>
-                        <div class="">
-                            <div class="">
-                                <img src="img/amsterdam.jpeg" class="img-fluid rounded-bottom col-md-7 " alt="">
-                            </div>
-                        </div>
-                    </div>
-                </section>
+               <?php endforeach; 
+            } ?>
             </main>
 
             <footer class="bg-body-tertiary w-100 text-center mt-5 pt-5">

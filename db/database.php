@@ -230,7 +230,7 @@ class DatabaseHelper {
         }
 
         public function fetchHomePosts($username) {
-            $stmt = $this->db->prepare("SELECT id, descrizione, data FROM immagini WHERE username in (SELECT username_seguito FROM segue WHERE username_utente = $_SESSION[username])");
+            $stmt = $this->db->prepare("SELECT id, username, descrizione, data FROM immagini WHERE username in (SELECT username_seguito FROM segue WHERE username_utente = ?)");
             $stmt->bind_param("s", $username);
             $stmt->execute();
             $stmt->bind_result($id, $user, $desc, $date);
@@ -243,13 +243,6 @@ class DatabaseHelper {
     
             return $posts;
         }
-
-
-
-
-
-
-
 
     public function followUser($username, $userToFollow) {
         $stmt = $this->db->prepare("INSERT INTO segue (username_utente, username_seguito) VALUES (?, ?)");

@@ -46,17 +46,14 @@
                             
                         <!-- Rimuovi il bottone del toggler -->
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="row row-cols-6 navbar-nav mx-auto">
-    <a class="col nav-link d-flex justify-content-center" aria-current="page" href="#"><i class="fa-solid fa-house mx-3"></i></a>
-    <a class="col nav-link d-flex justify-content-center" aria-current="page" href="likes.php"><i class="fa-solid fa-heart mx-3"></i></a>
-    <a class="col nav-link d-flex justify-content-center" aria-current="page" href="createPost.php"><i class="fa-solid fa-plus fs-4 mx-3"></i></a>
-    <a class="col nav-link d-flex justify-content-center" aria-current="page" href="search.php"><i class="fa-solid fa-search mx-3"></i></a>                                    
-    <a class="col nav-link d-flex justify-content-center" aria-current="page" href="myProfile.php"><i class="fas fa-user mx-3"></i></a>
-    <a class="col nav-link d-flex justify-content-center" aria-current="page" href="util/logout.php"><i class="fa-solid fa-right-from-bracket mx-3"></i></a>
-</div>
-
-
-
+                            <div class="navbar-nav mx-auto">
+                                <a class="nav-link" aria-current="page" href="mainFeed.php"><i class="fa-solid fa-house"></i></a>
+                                <a class="nav-link" aria-current="page" href="likes.php"><i class="fa-solid fa-heart px-5"></i></a>
+                                <a class="nav-link" aria-current="page" href="createPost.php"><i class="fa-solid fa-plus fs-4"></i></a>
+                                <a class="nav-link" aria-current="page" href="search.php"><i class="fa-solid fa-search px-5"></i></a>                                    
+                                <a class="nav-link" aria-current="page" href="myProfile.php"><i class="fas fa-user "></i></a>
+                                <a class="col nav-link d-flex justify-content-center" aria-current="page" href="util/logout.php"><i class="fa-solid fa-right-from-bracket mx-3"></i></a>
+                            </div>
 
                             <!-- icona del logout -->
 
