@@ -44,8 +44,13 @@ require_once 'db/post.php';
 if (!empty($_POST)) {
 	$error = post_form_error();
 	if (empty($error)) {
-		$dbh->uploadPost(new_image_id(), $_POST['desc'], date('d/m/Y, H:i'), $_COOKIE['user']);
-		echo '<p>Il tuo post sarà visibile tra un attimo, puoi chiudere questa pagina.</p>';
+		$id = new_image_id();
+		$ext = preg_replace('^.+\\.', '', $_FILES['image']['name']);
+		$fileContent = file_get_contents($_FILES['image']['tmp_name']);
+
+		upload_image($id, $ext, $fileContent);
+		$dbh->uploadPost($id, $_POST['desc'], date('d/m/Y, H:i'), $_COOKIE['user']);
+		echo '<p>Il tuo post sarà visibile tra un attimo, ora puoi chiudere questa pagina.</p>';
 	} else {
 		echo '<p>Si sono verificati uno o più errori elencati di seguito:</p>';
 		echo $error;
