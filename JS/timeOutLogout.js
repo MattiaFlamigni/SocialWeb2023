@@ -1,5 +1,5 @@
 // dopo 10 minuti di inattivita
-const inactivityTimeout = 10 * 60 * 1000; // 1 minute
+const inactivityTimeout = 50 * 60 * 1000; // 1 minute
 
 // Inizializza il timeout e il gestore di timeout
 let timeout;

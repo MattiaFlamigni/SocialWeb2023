@@ -198,6 +198,8 @@ class DatabaseHelper {
         return $posts;
     }
 
+    
+
 
 
     public function searchQuery($userInput) {
@@ -229,7 +231,7 @@ class DatabaseHelper {
             return $searchResults;
         }
 
-        public function fetchHomePosts($username) {
+        /*public function fetchHomePosts($username) {
             $stmt = $this->db->prepare("SELECT id, username, descrizione, data FROM immagini WHERE username in (SELECT username_seguito FROM segue WHERE username_utente = ?)");
             $stmt->bind_param("s", $username);
             $stmt->execute();
@@ -242,7 +244,26 @@ class DatabaseHelper {
             }
     
             return $posts;
+        }*/
+
+
+        public function fetchHomePosts($username){
+            $stmt = $this->db->prepare("SELECT id, username, descrizione, data FROM immagini WHERE username in (SELECT username_seguito FROM segue WHERE username_utente = ?)");
+            $stmt->bind_param("s", $username);
+            $stmt->execute();
+            $result = $stmt->get_result(); 
+    
+            $posts = array();
+            while($row = $result->fetch_assoc()){
+                // TODO: usa la classe Post (vedi db/post.php) così da restituire gli oggetti di tale classe invece degli ID delle immagini
+                $posts[] = $row;
+            }
+    
+            //ritorno id delle immagini
+            return $posts;
         }
+
+
 
     public function followUser($username, $userToFollow) {
         $stmt = $this->db->prepare("INSERT INTO segue (username_utente, username_seguito) VALUES (?, ?)");
