@@ -101,7 +101,7 @@ class DatabaseHelper {
     }*/
 
     public function userExists($username) {
-        $stmt = $this->db->prepare("SELECT username FROM utenti WHERE username = ?");
+        $stmt = $this->db->prepare("SELECT * FROM utenti WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();  
@@ -421,6 +421,22 @@ class DatabaseHelper {
 
     }
 
+
+
+    public function resetPassword($username, $newPassword){
+        $stmt = $this->db->prepare("UPDATE utenti SET password = ? WHERE username = ?");
+        $stmt->bind_param("ss", $newPassword, $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result) {
+    
+            return false;
+        }
+
+        return true;
+        
+    }
 }
 
 
