@@ -10,6 +10,9 @@ require_once("../bootstrap.php");
     $username = $_POST["username"];
     $password = $_POST["password"];
 
+    var_dump($username);
+    var_dump($password);
+
     $result = $dbh->login($username, $password);
     $exists = $dbh->userExists($username);
 

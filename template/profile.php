@@ -157,7 +157,7 @@
               selectedImage.src = this.src;
               likeNumber.textContent = likeCount;
               imageDetailsModal.show();
-            });
+            }); 
           });
         });
 
