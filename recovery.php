@@ -1,10 +1,11 @@
-<form action="./util/recover-password.php" method="post">
-    <label for="email">Indirizzo Email:</label>
-    <input type="email" id="email" name="email" required>
+<?php
+require_once("bootstrap.php");
 
-    <label for="username">Username:</label>
-    <input type="username" id="username" name="username" required>
-    <button type="submit">Recupera Password</button>
-</form>
+$templateParams["titolo"] = "Recover";
+$templateParams["titolo_pagina"] = "Recover";
+$templateParams["nome"] = "recovery.php";
+$templateParams["nascondi_footer"] = true;
 
+require("template/base.php");
 
+?>

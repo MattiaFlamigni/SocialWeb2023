@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
 
     // Recupero dell'email inviata tramite il modulo
-    $email = $_POST["email"];
+    $email = $_POST["mail"];
     $username = $_POST["username"]; 
 
     // Verifica se l'utente esiste
@@ -26,10 +26,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $mailer = new Mailer();
         $mailer->sendMail("flami2002@gmail.com", $email, "Nuova password", "La tua nuova password è: $newPassword");
 
-        echo "Un'email è stata inviata con la tua nuova password.";
+        echo '<script>alert("Email inviata con successo!");</script>'
         header("Refresh:0; url=../index.php");
     } else {
-        echo "L'indirizzo email non è associato a nessun account.";
+        echo '<script>alert("Utente non trovato!");</script>'
 
         header("Refresh:0; url=../index.php");
 
