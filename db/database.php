@@ -454,6 +454,30 @@ class DatabaseHelper {
         return $row["username"];
         
     }
+
+
+    public function checkOldPassword($username, $oldPassword){
+        $stmt = $this->db->prepare("SELECT password FROM utenti WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        if ($result->num_rows == 0) {
+    
+            return false;
+        }
+    
+        $row = $result->fetch_assoc();
+
+        if($row["password"] == $oldPassword){
+            return true;
+        } else {
+            return false;
+        }
+        
+    }
+    
+    
 }
 
 
