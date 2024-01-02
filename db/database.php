@@ -184,8 +184,8 @@ class DatabaseHelper {
 
     // fetch posts liked by a user from the server as URLs
     public function fetchLikedPosts($username) {
-        $stmt = $this->db->prepare("SELECT id, username, descrizione, data FROM immagini JOIN like ON like.id = immagini.id WHERE like.username = ?");
-        $stmt->bind_param("s", $username);
+        $stmt = $this->db->prepare('SELECT id, username, descrizione, data FROM immagini JOIN like ON like.id = immagini.id WHERE like.username = ?;');
+        $stmt->bind_param('s', $username);
         $stmt->execute();
         $stmt->bind_result($id, $user, $desc, $date);
 
@@ -196,6 +196,12 @@ class DatabaseHelper {
         }
 
         return $posts;
+    }
+
+    public function uploadPost($imageID, $description, $date, $username) {
+        $stmt = $this->db->prepare('INSERT INTO immagini (id, descrizione, data, username) VALUES (?, ?, ?, ?);');
+        $stmt->bind_param('isss', $imageID, $description, $date, $username);
+        $stmt->execute();
     }
 
     
