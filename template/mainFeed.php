@@ -2,6 +2,13 @@
 
             <?php 
 
+
+
+                if(count($templateParams["posts"]) > 0){
+
+
+
+                    
             foreach($templateParams["posts"] as $post): ?>
 
             <section class="d-flex justify-content-center text-center">
@@ -33,7 +40,16 @@
                 
             </section>
 
+
+            
+
          <?php endforeach; ?>
 
+
+         <?php } else{ ?>
+                <div class="mt-5 container justify-content-center">
+                    <h3>Non hai ancora postato nulla</h3>
+                </div>
+            <?php }  ?>
 
             
