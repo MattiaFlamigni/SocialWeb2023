@@ -254,7 +254,7 @@ class DatabaseHelper {
 
 
         public function fetchHomePosts($username){
-            $stmt = $this->db->prepare("SELECT id, username, descrizione, data FROM immagini WHERE username in (SELECT username_seguito FROM segue WHERE username_utente = ?)");
+            $stmt = $this->db->prepare("SELECT id, username, descrizione, data FROM immagini WHERE username in (SELECT username_seguito FROM segue WHERE username_utente = ?) ORDER BY data");
             $stmt->bind_param("s", $username);
             $stmt->execute();
             $result = $stmt->get_result(); 
@@ -527,6 +527,18 @@ class DatabaseHelper {
 
     public function getNomeByPost($post) {
         $stmt = $this->db->prepare("SELECT UTENTI.nome FROM UTENTI JOIN IMMAGINI ON UTENTI.username = IMMAGINI.username WHERE IMMAGINI.ID = ?");
+        $stmt->bind_param("s", $nome);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows == 0) {
+            return 0;
+        }
+        $row = $result->fetch_assoc();
+        return $row["nome"];
+    }
+
+    public function getUsernameByPost($post) {
+        $stmt = $this->db->prepare("SELECT username FROM immagini WHERE ID_Immagine = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -535,6 +547,19 @@ class DatabaseHelper {
         }
         $row = $result->fetch_assoc();
         return $row["nome"];
+    }
+
+    public function listComments($post) {
+        $stmt = this->db->prepare("SELECT testo, username FROM commenti WHERE ID_Immagine = ?")
+        $stmt->bind_param("ss", $testo, $username);
+        $stmt->execute();
+        $result = $stmt->get_result(); 
+    
+            $comments = array();
+            while($row = $result->fetch_assoc()){
+                $comments[] = $row;
+            }
+            return $comments;
     }
 }
 
