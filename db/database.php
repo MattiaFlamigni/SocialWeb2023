@@ -538,7 +538,7 @@ class DatabaseHelper {
     }
 
     public function getUsernameByPost($post) {
-        $stmt = $this->db->prepare("SELECT username FROM immagini WHERE ID_Immagine = ?");
+        $stmt = $this->db->prepare("SELECT username FROM immagini WHERE ID = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
