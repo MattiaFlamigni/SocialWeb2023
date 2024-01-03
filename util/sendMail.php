@@ -16,7 +16,7 @@ try {
     $mail = new Mailer();
 
 
-    $mail->sendMail("flami2002@gmail.com", $recipientEmail, "Nuovo Like", "nuovo like ricevuto");
+    $mail->sendMail("flami2002@gmail.com", $recipientEmail, "Nuovo Like", "ciao ". $dbh->getNomeByPost($postId). ", " . $_SESSION["username"]. " ti ha appena messo like ad un post!  ");
 
     
     echo 'Mail sent successfully';
