@@ -1,0 +1,21 @@
+<?php
+require_once("bootstrap.php");
+
+
+$templateParams["titolo"] = "commenti";
+$templateParams["titolo_pagina"] = "commenti";
+$templateParams["nome"] = "commenti.php";
+
+/*$templateParams["posts"] = $dbh->getPostsByUser($_SESSION["username"]);
+$templateParams["utente"] = $dbh->getUserByUsername($_SESSION["username"]);
+
+$templateParams["numPost"] = $dbh->getNumPosts($_SESSION["username"]);
+$templateParams["numFollowing"] = $dbh->getNumFollowing($_SESSION["username"]);
+$templateParams["numFollowers"] = $dbh->getNumFollowers($_SESSION["username"]);*/
+
+
+$templateParams["comments"] = $dbh->listComments($templateParams["current_post"]);
+
+require("template/base.php");
+
+?>

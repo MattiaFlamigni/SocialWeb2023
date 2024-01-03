@@ -38,11 +38,16 @@ if (count($templateParams["posts"]) > 0) {
                             <input type="hidden" name="postId" value="<?php echo $post["id"] ?>">
                             <a name="post<?php echo $post["id"] ?>"></a>
                         </form>
-                        <a href="commenti.html" aria-label="vai ai commenti">
-                            <button type="button" class="btn">
+                        <form action="util/commenti.php" class="comment-form" method="POST">
+                            <a href="commenti.php">
+                            <button type="button"
+                                onclick="commenti.php"
+                                aria-label="Commenti"
+                                class="btn">
                                 <i class="far fa-comment px-4 py-1"></i>
                             </button>
-                        </a>
+                            </a> 
+                        </form>
                     </div>
                 </div>
             </div>
