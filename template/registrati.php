@@ -32,11 +32,11 @@
             <div class="mb-3">
                 <label for="name" class="form-label">Nome</label>
                 <input type="text" class="form-control" id="name" name="name" required>
-              </div>
-              <div class="mb-3">
+            </div>
+            <div class="mb-3">
                 <label for="name" class="form-label">Cognome</label>
                 <input type="text" class="form-control" id="surname" name="surname" required>
-              </div>
+            </div>
               <div class="mb-3">
                 <label for="name" class="form-label">Mail</label>
                 <input type="text" class="form-control" id="mail" name="mail" required>
@@ -56,12 +56,14 @@
               <label for="password" class="form-label">Conferma Password</label>
               <input type="password" class="form-control" id="password2" name="password" required>
               <div id="password2-check-result"></div>
+            </div>
             <button type="submit" id="registrazioneBtn" class="login-btn btn btn-primary ltext-white container-fluid disabled">Registrati</button>
           </form>
 
           <a href="index.php" class="">Login</a>
         </div>
-       
+
+
       </div>
     </div>
   </div>
@@ -69,8 +71,8 @@
 
 
 
-<script src="JS\checkPassword.js"></script>
-<script src="JS\isValidUser.js"></script>
-<script src="JS\isValidMail.js"></script>
+<script src="JS/checkPassword.js"></script>
+<script src="JS/isValidUser.js"></script>
+<script src="JS/isValidMail.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="JS\isValidPassword.js"></script>
+<script src="JS/isValidPassword.js"></script>
