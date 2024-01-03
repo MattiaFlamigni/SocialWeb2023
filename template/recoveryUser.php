@@ -28,7 +28,7 @@
           <h4>Recupera Username</h4>
         </div>
         <div class="card-body login-form px-20">
-          <form action="util\recover-username.php" method="POST">
+          <form action="util/recover-username.php" method="POST">
             
               <div class="mb-3">
                 <label for="mail" class="form-label">Mail</label>
@@ -42,7 +42,7 @@
               
             </div>
             
-            <button type="submit" id="" class="login-btn btn btn-primary ltext-white container-fluid">Invia Username tramite mail</button>
+            <button type="submit" class="login-btn btn btn-primary ltext-white container-fluid">Invia Username tramite mail</button>
           </form>
 
           <a href="index.php" class="">Login</a>

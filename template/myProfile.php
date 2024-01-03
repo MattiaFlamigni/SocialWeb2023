@@ -66,7 +66,7 @@
         </div>
     </section>
 
-    <main class="container text-center bg-body-tertiary col-11 col-md-9">
+    <section class="container text-center bg-body-tertiary col-11 col-md-9">
 
         <div class=" ">
             <div class="row row-cols-3">
@@ -74,7 +74,7 @@
                 <?php 
                 if(!empty($templateParams["posts"])){
                     foreach ($templateParams["posts"] as $post) : ?>
-                <div class="col"><img src="<?php echo UPLOAD_DIR.$post["id"]. '.jpeg' ?>" class="img-fluid rounded m-1"
+                <div class="col"><img alt="" src="<?php echo UPLOAD_DIR.$post["id"]. '.jpeg' ?>" class="img-fluid rounded m-1"
                         data-like="<?php echo $dbh->getNumLikeToPost($post["id"]); ?>"></div>
                 <!--<div class="col"><img src="./img/amsterdam.jpeg" class="img-fluid rounded m-1" data-like="10"></div> !-->
                 <!-- Aggiungi questa sezione dopo la sezione delle immagini nel tuo file HTML -->
@@ -88,7 +88,7 @@
                                     aria-label="Chiudi"></button>
                             </div>
                             <div class="modal-body">
-                                <img id="selectedImage" class="img-fluid rounded mb-3" alt="Immagine">
+                                <img id="selectedImage" src="#" class="img-fluid rounded mb-3" alt="Immagine">
                                 <p id="likeCount" class="text-center">Like: <span id="likeNumber">0</span></p>
                             </div>
                         </div>
@@ -104,7 +104,7 @@
             <?php }  ?>
         </div>
 
-    </main>
+            </section>
 
     
 

@@ -1,11 +1,10 @@
 
 
 
-    <?php
-    if(!isset($_SESSION["username"])){
-        header("Location: ./index.php");
-        exit();
-    }?>
+<?php if (!isset($_SESSION["username"])) {
+    header("Location: ./index.php");
+    exit();
+} ?>
 
     <section class="d-flex justify-content-center">
         <div class="container-fluid mt-3">
@@ -16,10 +15,9 @@
 
             <div class="row row-cols-1 bg-body-tertiary col-md-9  mx-auto pb-3 pt-3">
                 <div class="col  text-center"><img src="img/user.jpg" class="rounded-circle" alt="utente" width="50"
-                        height="50"><label class=""><?php 
-                                                    if(isset($templateParams["utente"]["nome"])){
-                                                        echo $templateParams["utente"]["nome"]." ". $templateParams["utente"]["cognome"];
-                                                    } ?>  </label></div>
+                        height="50"><label class=""><?php if (isset($templateParams["utente"]["nome"])) {
+    echo $templateParams["utente"]["nome"] . " " . $templateParams["utente"]["cognome"];
+} ?>  </label></div>
 
             </div>
 
@@ -47,99 +45,77 @@
                     </div>
                 </div>
                                                     
-                <?php
-                    // Verifica se l'utente sta già seguendo l'utente visualizzato
-                    $isFollowing = $dbh->isFollowing($_SESSION["username"], $_GET["username"]);
-                ?>
+                <?php // Verifica se l'utente sta già seguendo l'utente visualizzato
+$isFollowing = $dbh->isFollowing($_SESSION["username"], $_GET["username"]); ?>
 
                 <form action="util/follow.php" method="GET">
                     <button type="submit" id="button" class="btn mx-auto mb-3 col-9 bg-primary  rounded-4 mt-4">
-                        <?php
-                        // Modifica il testo del pulsante in base alla relazione di follow se è vera richiamo la funzione follow() altrimenti stampo + FOLLOW
-                        echo $isFollowing ? "Seguito" : "+ FOLLOW";
-                        ?>
+                        <?php // Modifica il testo del pulsante in base alla relazione di follow se è vera richiamo la funzione follow() altrimenti stampo + FOLLOW
+echo $isFollowing ? "Seguito" : "+ FOLLOW"; ?>
                     </button>
 
                     <!-- quando invia il form, il valore di $_GET["username"] sarà l'username dell'utente che si sta visualizzando -->
-                    <input type="hidden" name="username" value="<?php echo $_GET["username"] ?>">
+                    <input type="hidden" name="username" value="<?php echo $_GET["username"]; ?>">
                 </form>
 
-                <?php
-                // Se l'utente sta già seguendo, esegui uno script JavaScript dopo il caricamento della pagina per cambiare il colore del bottone
-                if ($isFollowing) {
-                    echo '<script>
+                <?php // Se l'utente sta già seguendo, esegui uno script JavaScript dopo il caricamento della pagina per cambiare il colore del bottone
+if ($isFollowing) {
+    echo '<script>
                             document.addEventListener("DOMContentLoaded", function() {
                                 follow();
                             });
                         </script>';
-
-
-                }
-                ?>
+} ?>
 
 
             </div>
         </div>
     </section>
 
-    <main class="container-fluid text-center bg-body-tertiary col-12 col-md-9">
+    <section class="container-fluid text-center bg-body-tertiary col-12 col-md-9">
 
-        <div class=" ">
+        <div>
             <div class="row row-cols-3">
                 
-                <?php 
-                if(!empty($templateParams["posts"])){
-                    foreach ($templateParams["posts"] as $post) : ?>
-                <div class="col"><img src="<?php echo UPLOAD_DIR.$post["id"]. '.jpeg' ?>" class="img-fluid rounded m-1"
+                <?php if (!empty($templateParams["posts"])) {
+    foreach ($templateParams["posts"] as $post): ?>
+                <div class="col"><img src="<?php echo UPLOAD_DIR . $post["id"] . ".jpeg"; ?>" class="img-fluid rounded m-1"
                         data-like="10"></div>
-                <!--<div class="col"><img src="./img/amsterdam.jpeg" class="img-fluid rounded m-1" data-like="10"></div> !-->
-                <!-- Aggiungi questa sezione dopo la sezione delle immagini nel tuo file HTML -->
-                <div id="imageDetails" class="modal fade" tabindex="-1" aria-labelledby="imageDetailsLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="imageDetailsLabel">Dettagli Immagine</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Chiudi"></button>
-                            </div>
-                            <div class="modal-body">
-                                <img id="selectedImage" class="img-fluid rounded mb-3" alt="Immagine">
-                                <p id="likeCount" class="text-center">Like: <span id="likeNumber">0</span></p>
+                    <!--<div class="col"><img src="./img/amsterdam.jpeg" class="img-fluid rounded m-1" data-like="10"></div> !-->
+                    <!-- Aggiungi questa sezione dopo la sezione delle immagini nel tuo file HTML -->
+                    <div id="imageDetails" class="modal fade" tabindex="-1" aria-labelledby="imageDetailsLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="imageDetailsLabel">Dettagli Immagine</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Chiudi"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img id="selectedImage" class="img-fluid rounded mb-3" alt="Immagine">
+                                    <p id="likeCount" class="text-center">Like: <span id="likeNumber">0</span></p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+    </div>
+            <?php
+    endforeach; ?>
+                        
 
-            <?php endforeach; ?>
-
-            <?php } else{ ?>
+            <?php
+} else {
+?>
                 <div class="mt-5 container justify-content-center">
                     <h3>Nessun Post </h3>
                 </div>
-            <?php }  ?>
+            <?php
+} ?>
         </div>
 
-    </main>
+    </section>
 
-    <footer class="bg-body-tertiary w-100 text-center mt-5 pt-5">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-expand fixed-bottom ">
-            <div class="container-fluid">
-
-                <!-- Rimuovi il bottone del toggler -->
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav mx-auto">
-                        <a class="nav-link" aria-current="page" href="./mainFeed.html"><i
-                                class="fa-solid fa-house"></i></a>
-                        <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-heart px-5"></i></a>
-                        <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-plus fs-4"></i></a>
-                        <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-search px-5"></i></a>
-                        <a class="nav-link" aria-current="page" href="./profile.html"><i class="fas fa-user "></i></a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </footer>
 
 
     <script>

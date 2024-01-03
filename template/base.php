@@ -14,7 +14,7 @@
             <link href="CSS/home.css" rel="stylesheet" type="text/css">
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-            <script src="JS\timeOutLogout.js"></script>
+            <script src="JS/timeOutLogout.js"></script>
             
             <title><?php echo $templateParams["titolo"]; ?></title>
 
