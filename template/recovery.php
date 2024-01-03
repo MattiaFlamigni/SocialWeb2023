@@ -38,11 +38,11 @@
             
             <div class="mb-3">
               <label for="username" class="form-label">Username</label>
-              <input type="username" class="form-control" id="username" name="username" required>
+              <input type="text" class="form-control" id="username" name="username" required>
               
             </div>
             
-            <button type="submit" id="" class="login-btn btn btn-primary ltext-white container-fluid">Invia nuova password tramite mail</button>
+            <button type="submit" class="login-btn btn btn-primary ltext-white container-fluid">Invia nuova password tramite mail</button>
           </form>
 
           <a href="index.php" class="">Login</a>
