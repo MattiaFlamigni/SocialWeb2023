@@ -20,7 +20,7 @@ function post_image_error() {
 	$mimeType = mime_content_type($image['tmp_name']);
 
 	if ($mimeType === false || !in_array($mimeType, $allowedTypes)) {
-		return "il formato dell\'immagine caricata ($imageSize) non è ammesso, sono ammessi solo PNG e JPEG/JPG";
+		return "il formato dell'immagine caricata ($mimeType) non è ammesso, sono ammessi solo PNG (image/png) e JPEG/JPG (image/jpeg)";
 	}
 	if ($imageSize === false) {
 		return 'le dimensioni dell\'immagine non possono essere lette, potrebbe essere corrotta';
