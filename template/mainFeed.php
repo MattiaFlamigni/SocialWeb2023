@@ -98,6 +98,7 @@ if (count($templateParams["posts"]) > 0) {
 
                         if (response.ok) {
                             // Gestisci la risposta in base alle tue esigenze
+                            
                         } else {
                             console.error('Failed to send mail');
                         }
