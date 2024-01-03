@@ -5,7 +5,7 @@ require_once("../bootstrap.php");
 require_once("./Mailer.php");
 session_start();
 
-$postToLike = $_GET['username'];
+$postToLike = $_GET['postId'];
 
 
 

@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include ("post.php");
+
 class DatabaseHelper {
     private $db;
 
@@ -493,7 +493,7 @@ class DatabaseHelper {
     }
 
     public function isLiked($username, $post) {
-        $stmt = $this->db->prepare("SELECT * FROM likes WHERE username_utente = ? AND ID_Immagine = ?");
+        $stmt = $this->db->prepare("SELECT * FROM likes WHERE username= ? AND ID_Immagine = ?");
         $stmt->bind_param("ss", $username, $post);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -508,10 +508,10 @@ class DatabaseHelper {
         $stmt->bind_param("ss", $username, $post);
         $stmt->execute();
         $result = $stmt->get_result();
-        if ($result->num_rows == 0) {
-            return false;
+        if ($result) {
+            return true;
         }
-        return true;
+        return false;
     }
 
     public function removeLike($username, $post) {
@@ -519,14 +519,14 @@ class DatabaseHelper {
         $stmt->bind_param("ss", $username, $post);
         $stmt->execute();
         $result = $stmt->get_result();
-        if ($result->num_rows == 0) {
-            return false;
+        if ($result) {
+            return true;
         }
-        return true;
+        return false;
     }
 
     public function getNomeByPost($post) {
-        $stmt = $this->db->prepare("SELECT UTENTI.nome FROM UTENTI JOIN IMMAGINI ON UTENTI.username = IMMAGINI.username WHERE IMMAGINI.ID = ?")
+        $stmt = $this->db->prepare("SELECT UTENTI.nome FROM UTENTI JOIN IMMAGINI ON UTENTI.username = IMMAGINI.username WHERE IMMAGINI.ID = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();

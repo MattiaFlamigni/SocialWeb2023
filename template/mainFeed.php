@@ -16,11 +16,22 @@ if(count($templateParams["posts"]) > 0){
                 </div>
                 <div class="d-flex justify-content-between col-md-7 container-fluid bg-body-tertiary pt-2">
                     <div class="d-flex">
+
+                        
+                        <script>
+                            if(document.getElementById("likeButton").classList.contains("liked")){
+                                //colora il bottone di colore primario
+                                document.getElementById("likeButton").classList.add("btn-primary");
+                            } else{
+                                document.getElementById("likeButton").classList.remove("btn-primary");
+                            }
+                        </script>
                         <form action="util/like.php" method="GET">
-                            <button type="button" aria-label="Like" class="btn">
+                        <button type="submit" id="likeButton" aria-label="Like" class="btn <?php echo ($dbh->isLiked($_SESSION["username"], $post["id"])) ? 'liked' : ''; ?> mb-2">
                             <i class="far fa-heart p-1"></i><span class="px-2"><?php echo $dbh->getNumLikeToPost($post["id"]) ?></span>
-                            </button>
-                            <input type="hidden" name="post id" value="<?php echo $post["id"] ?>">
+                        </button>
+
+                            <input type="hidden" name="postId" value="<?php echo $post["id"] ?>">
                         </form>
                         <a href="commenti.html" aria-label="vai ai commenti">
                             <button type="button"  class="btn">
@@ -39,10 +50,15 @@ if(count($templateParams["posts"]) > 0){
 
     <?php }
       
-    echo <script>
+?>
 
-         </script>?>
-
-
-
-            
+<script>
+    document.getElementById("likeButton").addEventListener("click", function(){
+        if(this.classList.contains("liked")){
+            //colora il bottone di colore primario
+            this.classList.add("btn-primary");
+        } else{
+            this.classList.remove("btn-primary");
+        }   
+    });
+</script>
