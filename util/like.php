@@ -16,7 +16,7 @@ if($dbh->isLiked($_SESSION["username"], $postToLike)){
 
 $dbh->likePost($_SESSION["username"], $postToLike);
 
-$mailer = new Mailer();
-$mailer->sendMail("flami2002@gmail.com", $dbh->getMailFromUser($dbh->getUsernameByPost($postToLike)), "Nuovo Like!", "Ciao " . $dbh->getNomeByPost($postToLike) . ", " . $_SESSION["username"] . " ti ha appena messo like ad un post!");
+//$mailer = new Mailer();
+//$mailer->sendMail("flami2002@gmail.com", $dbh->getMailFromUser($dbh->getUsernameByPost($postToLike)), "Nuovo Like!", "Ciao " . $dbh->getNomeByPost($postToLike) . ", " . $_SESSION["username"] . " ti ha appena messo like ad un post!");
 
 ?>

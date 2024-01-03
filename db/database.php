@@ -539,14 +539,14 @@ class DatabaseHelper {
 
     public function getUsernameByPost($post) {
         $stmt = $this->db->prepare("SELECT username FROM immagini WHERE ID = ?");
-        $stmt->bind_param("s", $username);
+        $stmt->bind_param("s", $post);
         $stmt->execute();
         $result = $stmt->get_result();
         if ($result->num_rows == 0) {
             return 0;
         }
         $row = $result->fetch_assoc();
-        return $row["nome"];
+        return $row["username"];
     }
 
     public function listComments($post) {

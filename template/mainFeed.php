@@ -65,42 +65,59 @@ if (count($templateParams["posts"]) > 0) {
 
 <script>
     function handleLike(button) {
-        var postId = button.getAttribute('data-post-id');
-        var formData = new FormData();
-        formData.append('postId', postId);
+    let postId = button.getAttribute('data-post-id');
+    let formData = new FormData();
+    formData.append('postId', postId);
 
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'util/like.php', true);
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', 'util/like.php', true);
 
-        xhr.onload = function () {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    var likeButton = button;
-                    var likeCount = likeButton.querySelector('span');
-                    var isLiked = likeButton.classList.contains('liked');
+    xhr.onload = async function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                let likeButton = button;
+                let likeCount = likeButton.querySelector('span');
+                let isLiked = likeButton.classList.contains('liked');
 
-                    if (isLiked) {
-                        likeButton.classList.remove('liked');
-                        likeCount.textContent = parseInt(likeCount.textContent) - 1;
-                        likeButton.style.color = "black";
-                    } else {
-                        likeButton.classList.add('liked');
-                        likeCount.textContent = parseInt(likeCount.textContent) + 1;
-                        //colora il cuore di rosso
-                        likeButton.style.color = "red";
-
-
-                    }
+                if (isLiked) {
+                    likeButton.classList.remove('liked');
+                    likeCount.textContent = parseInt(likeCount.textContent) - 1;
+                    likeButton.style.color = "black";
                 } else {
-                    console.log('Error: ' + xhr.status);
-                }
-            }
-        };
+                    likeButton.classList.add('liked');
+                    likeCount.textContent = parseInt(likeCount.textContent) + 1;
+                    // colora il cuore di rosso
+                    likeButton.style.color = "red";
 
-        xhr.send(formData);
-    }
+                    // Invia la mail in modo asincrono
+                    try {
+                        let response = await fetch('util/sendMail.php', {
+                            method: 'POST',
+                            body: formData
+                        });
+
+                        if (response.ok) {
+                            // Gestisci la risposta in base alle tue esigenze
+                        } else {
+                            console.error('Failed to send mail');
+                        }
+                    } catch (error) {
+                        console.error('Error during mail sending:', error);
+                    }
+                }
+            } else {
+                console.log('Error: ' + xhr.status);
+            }
+        }
+    };
+
+    xhr.send(formData);
+}
+
 </script>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+
 
 
