@@ -39,7 +39,7 @@
 <?php
 require_once 'util/post.php';
 require_once './bootstrap.php';
-require_once 'db/post.php';
+require_once 'util/post.php';
 
 if (!empty($_POST)) {
 	$error = post_form_error();
