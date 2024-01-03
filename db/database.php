@@ -550,7 +550,7 @@ class DatabaseHelper {
     }
 
     public function listComments($post) {
-        $stmt = this->db->prepare("SELECT testo, username FROM commenti WHERE ID_Immagine = ?")
+        $stmt = $this->db->prepare("SELECT testo, username FROM commenti WHERE ID_Immagine = ?")
         $stmt->bind_param("ss", $testo, $username);
         $stmt->execute();
         $result = $stmt->get_result(); 
