@@ -8,7 +8,6 @@
 
 <?php
 require("bootstrap.php");
-
 if (count($templateParams["posts"]) > 0) {
     foreach ($templateParams["posts"] as $post):
         ?>
