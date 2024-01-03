@@ -14,7 +14,7 @@ $templateParams["numFollowing"] = $dbh->getNumFollowing($_SESSION["username"]);
 $templateParams["numFollowers"] = $dbh->getNumFollowers($_SESSION["username"]);*/
 
 
-$templateParams["comments"] = $dbh->listComments($templateParams["current_post"]);
+$templateParams["comments"] = $dbh->listComments(1);
 
 require("template/base.php");
 

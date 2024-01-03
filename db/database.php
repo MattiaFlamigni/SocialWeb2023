@@ -527,7 +527,7 @@ class DatabaseHelper {
 
     public function getNomeByPost($post) {
         $stmt = $this->db->prepare("SELECT UTENTI.nome FROM UTENTI JOIN IMMAGINI ON UTENTI.username = IMMAGINI.username WHERE IMMAGINI.ID = ?");
-        $stmt->bind_param("s", $nome);
+        $stmt->bind_param("s", $post);
         $stmt->execute();
         $result = $stmt->get_result();
         if ($result->num_rows == 0) {
@@ -551,7 +551,7 @@ class DatabaseHelper {
 
     public function listComments($post) {
         $stmt = $this->db->prepare("SELECT testo, username FROM commenti WHERE ID_Immagine = ?");
-        $stmt->bind_param("ss", $testo, $username);
+        $stmt->bind_param("s", $post);
         $stmt->execute();
         $result = $stmt->get_result(); 
     
