@@ -17,16 +17,17 @@ function post_image_error() {
 	$minSize = 200;
 	$maxSize = 3000;
 	$imageSize = getimagesize($image['tmp_name']);
+	$mimeType = mime_content_type($image['tmp_name']);
 
-	if ($imageSize === false) {
-		return 'l\'immagine non può essere letta, probabilmete è corrotta';
+	if ($mimeType === false || !in_array($mimeType, $allowedTypes)) {
+		return "il formato dell\'immagine caricata ($imageSize) non è ammesso, sono ammessi solo PNG e JPEG/JPG";
 	}
-	if (in_array($imageSize['mime'], $allowedTypes)) {
-		return 'il formato dell\'immagine caricata non è ammesso, sono ammessi solo PNG e JPEG';
+	if ($imageSize === false) {
+		return 'le dimensioni dell\'immagine non possono essere lette, potrebbe essere corrotta';
 	}
 	if ($imageSize[0] >= $minSize && $imageSize[0] <= $maxSize &&
 	$imageSize[1] >= $minSize && $imageSize[1] <= $maxSize) {
-		return 'l\'immagine è troppo grande o troppo piccola, le dimensioni ammesse per le immagini vanno da ' . $minSize . 'x' . $minSize . ' a ' . $maxSize . 'x' . $maxSize;
+		return "l'immagine è troppo grande o troppo piccola, le dimensioni ammesse per le immagini vanno da $minSize" . 'x' . "$minSize a $maxSize" . 'x' . "$maxSize";
 	}
 
 	return '';
