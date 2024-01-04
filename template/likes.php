@@ -2,7 +2,7 @@
 // this exposes the $dbh variable (object of DatabaseHelper), check the DatabaseHelper class in db/database.php for more info
 require_once 'bootstrap.php';
 
-require_once 'util/images.php';
+require_once 'util/post.php';
 
 $posts = $dbh->fetchLikedPosts($_COOKIE['user']);
 foreach ($posts as $post) {
