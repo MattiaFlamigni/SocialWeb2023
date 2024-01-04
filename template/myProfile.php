@@ -74,7 +74,7 @@
                 <?php 
                 if(!empty($templateParams["posts"])){
                     foreach ($templateParams["posts"] as $post) : ?>
-                <div class="col"><img src="<?php echo glob(UPLOAD_DIR . $post["id"] . ".*")[0]; ?>" class="img-fluid rounded m-1"
+                <div class="col"><img data-description="<?php /*echo $dbh->getDescription($post["id"])*/  echo $post["descrizione"];?>" src="<?php echo glob(UPLOAD_DIR . $post["id"] . ".*")[0]; ?>" class="img-fluid rounded m-1"
                         data-like="<?php echo $dbh->getNumLikeToPost($post["id"]); ?>"></div>
                 <!--<div class="col"><img src="./img/amsterdam.jpeg" class="img-fluid rounded m-1" data-like="10"></div> !-->
                 <!-- Aggiungi questa sezione dopo la sezione delle immagini nel tuo file HTML -->
@@ -90,6 +90,7 @@
                             <div class="modal-body">
                                 <img id="selectedImage" src="#" class="img-fluid rounded mb-3" alt="Immagine">
                                 <p id="likeCount" class="text-center">Like: <span id="likeNumber">0</span></p>
+                                <p id="imageDescription" class="text-center"></p>
                             </div>
                         </div>
                     </div>
@@ -114,6 +115,7 @@
           const imageDetailsModal = new bootstrap.Modal(document.getElementById('imageDetails'));
           const selectedImage = document.getElementById('selectedImage');
           const likeNumber = document.getElementById('likeNumber');
+          const imageDescription = document.getElementById('imageDescription'); // Aggiunto
       
           // Aggiungi un gestore di eventi clic a tutte le immagini
           const images = document.querySelectorAll('.img-fluid');
@@ -121,8 +123,10 @@
             image.addEventListener('click', function () {
               // Mostra l'immagine e il numero di like nella finestra modale
               const likeCount = this.getAttribute('data-like') || 0;
+              const description = this.getAttribute('data-description') || ''; // Aggiunto
               selectedImage.src = this.src;
               likeNumber.textContent = likeCount;
+              imageDescription.textContent = description;
               imageDetailsModal.show();
             });
           });

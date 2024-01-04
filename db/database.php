@@ -150,7 +150,7 @@ class DatabaseHelper {
 
 
     public function getPostsByUser($username){
-        $stmt = $this->db->prepare("SELECT id FROM immagini WHERE username = ?");
+        $stmt = $this->db->prepare("SELECT id, descrizione FROM immagini WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result(); 
@@ -572,6 +572,20 @@ class DatabaseHelper {
         }
         return false;
     }
+
+    /*public function getDescription($id){
+        $stmt = $this->db->prepare("SELECT descrizione FROM immagini where ID=?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result) {
+            $row = $result->fetch_assoc();
+            return $row['descrizione'];
+        }
+
+        return 'nessuna descrizione';
+        
+    }*/
 }
 
 ?>
