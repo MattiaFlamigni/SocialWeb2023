@@ -20,15 +20,15 @@ if (count($templateParams["posts"]) > 0) {
                 </div>
                 <div class="">
                     <div class="">
-                    <img src="<?php echo glob(UPLOAD_DIR . $post["id"] . '.*')[0]; ?>"
-     class="img-fluid rounded-bottom col-md-7 " alt="">
+                        <img src="<?php echo glob(UPLOAD_DIR . $post["id"] . '.*')[0]; ?>"
+                            class="img-fluid rounded-bottom col-md-7 " alt="">
 
                     </div>
-                    <div>
+                    <div class="container-fluid col-7">
                         <p><?php echo $post["descrizione"]?></p>
                     </div>
                 </div>
-                <div class="d-flex justify-content-between col-md-7 container-fluid bg-body-tertiary pt-2">
+                <div class="d-flex justify-content-between col-md-7 container-fluid bg-body-tertiary pt-2 mt-1">
                     <div class="d-flex">
                         <form class="like-form" action="util/like.php" method="POST">
                             <button type="button" onclick="handleLike(this)"
