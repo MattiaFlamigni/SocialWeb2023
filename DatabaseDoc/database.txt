@@ -4,7 +4,7 @@ IMMAGINI(descrizione, data, PK:ID, username:UTENTI)
 
 SEGUE(PK: username:UTENTI, PK: username as username_seguito:UTENTI);
 
-LIKE(PK: username:UTENTI, PK: ID:IMMAGINI)
+LIKES(PK: username:UTENTI, PK: ID:IMMAGINI)
 
 COMMENTI(PK:ID, testo, ID:IMMAGINI, username:UTENTI)
 
@@ -47,7 +47,7 @@ CREATE TABLE SEGUE (
 );
 
 -- Tabella LIKE
-CREATE TABLE LIKE (
+CREATE TABLE LIKES (
     username VARCHAR(50),
     ID_immagine INT,
     PRIMARY KEY (username, ID_immagine),

@@ -1,6 +1,6 @@
 <?php
 
-$imgdir = ''; // TODO
+// The destination directory of uploaded images is defined in bootstrap.php as UPLOAD_DIR
 
 function post_image_error() {
 	if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_FILES['image'])) {
@@ -17,16 +17,17 @@ function post_image_error() {
 	$minSize = 200;
 	$maxSize = 3000;
 	$imageSize = getimagesize($image['tmp_name']);
+	$mimeType = mime_content_type($image['tmp_name']);
 
+	if ($mimeType === false || !in_array($mimeType, $allowedTypes)) {
+		return "il formato dell'immagine caricata ($mimeType) non è ammesso, sono ammessi solo PNG (image/png) e JPEG/JPG (image/jpeg)";
+	}
 	if ($imageSize === false) {
-		return 'l\'immagine non può essere letta, probabilmete è corrotta';
+		return 'le dimensioni dell\'immagine non possono essere lette, potrebbe essere corrotta';
 	}
-	if (in_array($imageSize['mime'], $allowedTypes)) {
-		return 'il formato dell\'immagine caricata non è ammesso, sono ammessi solo PNG e JPEG';
-	}
-	if ($imageSize[0] >= $minSize && $imageSize[0] <= $maxSize &&
-	$imageSize[1] >= $minSize && $imageSize[1] <= $maxSize) {
-		return 'l\'immagine è troppo grande o troppo piccola, le dimensioni ammesse per le immagini vanno da ' . $minSize . 'x' . $minSize . ' a ' . $maxSize . 'x' . $maxSize;
+	if ($imageSize[0] < $minSize || $imageSize[0] > $maxSize ||
+	$imageSize[1] < $minSize || $imageSize[1] > $maxSize) {
+		return "l'immagine è troppo grande o troppo piccola ($imageSize[0]x$imageSize[1]), le dimensioni ammesse per le immagini vanno da $minSize" . 'x' . "$minSize a $maxSize" . 'x' . "$maxSize";
 	}
 
 	return '';
@@ -69,11 +70,10 @@ function post_form_error() {
 }
 
 function new_image_id() {
-	global $imgdir;
-	$files = scandir($imgdir);
+	$files = scandir(UPLOAD_DIR);
 	for ($i = 0; $i < count($files); $i++) {
 		// remove file extensions
-		$files[$i] = preg_replace('\\..+$', '', $files[$i]);
+		$files[$i] = preg_replace('/\\..+$/', '', $files[$i]);
 	}
 	$newID = '000000';
 	while (in_array($newID, $files)) {
@@ -86,15 +86,13 @@ function new_image_id() {
 
 // $ext can be 'png', 'jpeg', etc.
 function upload_image($id, $ext, $bytes) {
-	global $imgdir;
-	$newImage = fopen("$id.$ext", "w");
+	$newImage = fopen(UPLOAD_DIR . "$id.$ext", "w");
 	fwrite($newImage, $bytes);
 	fclose($newImage);
 }
 
 function image_url($id) {
-	global $imgdir;
-	$filedir = $imgdir . "$id.png";
+	$filedir = UPLOAD_DIR . "$id.png";
 	// TODO: do not use full paths as it may expose sensitive data
 	return $filedir;
 }
