@@ -73,7 +73,7 @@ function new_image_id() {
 	$files = scandir(UPLOAD_DIR);
 	for ($i = 0; $i < count($files); $i++) {
 		// remove file extensions
-		$files[$i] = preg_replace('\\..+$', '', $files[$i]);
+		$files[$i] = preg_replace('/\\..+$/', '', $files[$i]);
 	}
 	$newID = '000000';
 	while (in_array($newID, $files)) {
@@ -86,7 +86,7 @@ function new_image_id() {
 
 // $ext can be 'png', 'jpeg', etc.
 function upload_image($id, $ext, $bytes) {
-	$newImage = fopen("$id.$ext", "w");
+	$newImage = fopen(UPLOAD_DIR . "$id.$ext", "w");
 	fwrite($newImage, $bytes);
 	fclose($newImage);
 }
