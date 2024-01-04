@@ -561,6 +561,7 @@ class DatabaseHelper {
             }
             return $comments;
     }
+    
 }
 
 ?>

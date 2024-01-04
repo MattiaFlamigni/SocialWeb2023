@@ -98,8 +98,8 @@ if ($isFollowing) {
                             </div>
                         </div>
                     </div>
-                </div>
-    </div>
+                
+    
             <?php
     endforeach; ?>
                         
