@@ -20,8 +20,9 @@ if (count($templateParams["posts"]) > 0) {
                 </div>
                 <div class="">
                     <div class="">
-                        <img src="<?php echo UPLOAD_DIR . $post["id"] . '.jpeg' ?>"
-                             class="img-fluid rounded-bottom col-md-7 " alt="">
+                    <img src="<?php echo glob(UPLOAD_DIR . $post["id"] . '.*')[0]; ?>"
+     class="img-fluid rounded-bottom col-md-7 " alt="">
+
                     </div>
                     <div>
                         <p><?php echo $post["descrizione"]?></p>
@@ -101,7 +102,7 @@ if (count($templateParams["posts"]) > 0) {
 
                         if (response.ok) {
                             // Gestisci la risposta in base alle tue esigenze
-                            
+
                         } else {
                             console.error('Failed to send mail');
                         }

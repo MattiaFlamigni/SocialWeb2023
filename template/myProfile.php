@@ -74,7 +74,7 @@
                 <?php 
                 if(!empty($templateParams["posts"])){
                     foreach ($templateParams["posts"] as $post) : ?>
-                <div class="col"><img alt="" src="<?php echo UPLOAD_DIR.$post["id"]. '.jpeg' ?>" class="img-fluid rounded m-1"
+                <div class="col"><img src="<?php echo glob(UPLOAD_DIR . $post["id"] . ".*")[0]; ?>" class="img-fluid rounded m-1"
                         data-like="<?php echo $dbh->getNumLikeToPost($post["id"]); ?>"></div>
                 <!--<div class="col"><img src="./img/amsterdam.jpeg" class="img-fluid rounded m-1" data-like="10"></div> !-->
                 <!-- Aggiungi questa sezione dopo la sezione delle immagini nel tuo file HTML -->

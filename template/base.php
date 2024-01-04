@@ -25,7 +25,7 @@
 
             <main>  
                 <?php
-                    require($templateParams["nome"]);
+                    require('template/' . $templateParams["nome"]);
                 ?>
             </main>
 

@@ -200,7 +200,7 @@ class DatabaseHelper {
 
     public function uploadPost($imageID, $description, $date, $username) {
         $stmt = $this->db->prepare('INSERT INTO immagini (id, descrizione, data, username) VALUES (?, ?, ?, ?);');
-        $stmt->bind_param('isss', $imageID, $description, $date, $username);
+        $stmt->bind_param('ssss', $imageID, $description, $date, $username);
         $stmt->execute();
     }
 
