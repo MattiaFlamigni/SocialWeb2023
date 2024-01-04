@@ -17,6 +17,7 @@
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="changePassword.php">Reset Password</a>
+                <a class="nav-link" href="util/logout.php">LogOut </a>
             </li>
         </ul>
     </div>
