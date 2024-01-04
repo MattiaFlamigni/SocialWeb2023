@@ -24,11 +24,11 @@ if (count($templateParams["posts"]) > 0) {
                             class="img-fluid rounded-bottom col-md-7 " alt="">
 
                     </div>
-                    <div class="container-fluid col-7">
+                    <div class="container-fluid col-7 bg-body-tertiary pb-3">
                         <p><?php echo $post["descrizione"]?></p>
                     </div>
                 </div>
-                <div class="d-flex justify-content-between col-md-7 container-fluid bg-body-tertiary pt-2 mt-1">
+                <div class="d-flex justify-content-between col-md-7 container-fluid bg-body-tertiary pt-2 border-top">
                     <div class="d-flex">
                         <form class="like-form" action="util/like.php" method="POST">
                             <button type="button" onclick="handleLike(this)"
