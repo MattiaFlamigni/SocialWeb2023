@@ -1,7 +1,3 @@
-<div class="sticky-top py-1 mx-auto mb-3 text-center bg-body-tertiary border border-2 rounded-bottom border-top-0" style="max-width: 52em;">
-	<h1> Crea un nuovo post </h1>
-</div>
-
 <div class="container">
 	<div class="row">
 		<div class="col mt-3">

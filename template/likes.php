@@ -1,7 +1,3 @@
-<div class="sticky-top py-1 mx-auto mb-3 text-center bg-body-tertiary border border-2 rounded-bottom border-top-0" style="max-width: 52em;">
-	<h1> Post a cui hai messo Mi Piace </h1>
-</div>
-
 <?php
 // this exposes the $dbh variable (object of DatabaseHelper), check the DatabaseHelper class in db/database.php for more info
 require_once 'bootstrap.php';
