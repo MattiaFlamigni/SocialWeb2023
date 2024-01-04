@@ -23,6 +23,9 @@ if (count($templateParams["posts"]) > 0) {
                         <img src="<?php echo UPLOAD_DIR . $post["id"] . '.jpeg' ?>"
                              class="img-fluid rounded-bottom col-md-7 " alt="">
                     </div>
+                    <div>
+                        <p><?php echo $post["descrizione"]?></p>
+                    </div>
                 </div>
                 <div class="d-flex justify-content-between col-md-7 container-fluid bg-body-tertiary pt-2">
                     <div class="d-flex">
@@ -37,7 +40,7 @@ if (count($templateParams["posts"]) > 0) {
                             <input type="hidden" name="postId" value="<?php echo $post["id"] ?>">
                             <a name="post<?php echo $post["id"] ?>"></a>
                         </form>
-                        <form action="util/commenti.php" class="comment-form" method="POST">
+                        <form action="commenti.php" class="comment-form" method="POST">
                             <a href="commenti.php">
                             <button type="button"
                                 onclick="commenti.php"
@@ -45,6 +48,7 @@ if (count($templateParams["posts"]) > 0) {
                                 class="btn">
                                 <i class="far fa-comment px-4 py-1"></i>
                             </button>
+                            <input type="hidden" name="postId" value="<?php echo $post["id"] ?>">
                             </a> 
                         </form>
                     </div>

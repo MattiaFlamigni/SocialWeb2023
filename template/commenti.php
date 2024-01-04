@@ -22,4 +22,30 @@ if($templateParams["comments"] > 0) {
   </section>
 <?php }?>
 
+<section>
+    <div class="comment-bar" 
+            style="width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;">
+      <input type="text" class="comment-input" placeholder="Scrivi un commento..." 
+            style="width: 80%;
+            padding: 8px;
+            margin-right: 10px;
+            box-sizing: border-box;">
+      <button class="comment-button"  onclick="inviaCommento()"
+            style="padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;">Invia</button>
+    </div>
+  </section>
+
+  <script>
+    function inviaCommento() {
+      let commento = document.getElementById('comment-input').value;
+    }
+  </script>
+
 

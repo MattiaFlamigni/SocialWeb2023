@@ -561,6 +561,17 @@ class DatabaseHelper {
             }
             return $comments;
     }
+
+    public function addComment($text, $username, $post) {
+        $stmt = $this->db->prepare("INSERT INTO commenti (testo, username, ID_Immagine) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $text, $username, $post);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result) {
+            return true;
+        }
+        return false;
+    }
 }
 
 ?>

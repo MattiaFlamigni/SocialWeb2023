@@ -1,7 +1,7 @@
 <?php
 require_once("bootstrap.php");
 
-
+$postToComment = $_POST['postId'];
 $templateParams["titolo"] = "commenti";
 $templateParams["titolo_pagina"] = "commenti";
 $templateParams["nome"] = "commenti.php";
@@ -14,7 +14,7 @@ $templateParams["numFollowing"] = $dbh->getNumFollowing($_SESSION["username"]);
 $templateParams["numFollowers"] = $dbh->getNumFollowers($_SESSION["username"]);*/
 
 
-$templateParams["comments"] = $dbh->listComments(1);
+$templateParams["comments"] = $dbh->listComments($postToComment);
 
 require("template/base.php");
 
