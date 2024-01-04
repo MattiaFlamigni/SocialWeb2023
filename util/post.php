@@ -75,7 +75,7 @@ function new_image_id() {
 		// remove file extensions
 		$files[$i] = preg_replace('/\\..+$/', '', $files[$i]);
 	}
-	$newID = '000000';
+	$newID = '0';
 	while (in_array($newID, $files)) {
 		// increment ID
 		$newID = (string) (((int) $newID) + 1);
