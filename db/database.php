@@ -606,6 +606,21 @@ class DatabaseHelper {
             return false; // Restituiamo false per indicare il fallimento dell'inserimento
         }
     }
+
+
+    public function getMailFromImage($id){
+        $stmt = $this->db->prepare("SELECT mail from utenti where utenti.username=(select username from immagini where id = ?)");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows == 0) {
+            return 0;
+        }
+        $row = $result->fetch_assoc();
+        return $row["mail"];
+    }
+
+
 }
 
 ?>
