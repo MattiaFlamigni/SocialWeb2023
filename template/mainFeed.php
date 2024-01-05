@@ -39,18 +39,14 @@ if (count($templateParams["posts"]) > 0) {
                                         class="px-2"><?php echo $dbh->getNumLikeToPost($post["id"]) ?></span>
                             </button>
                             <input type="hidden" name="postId" value="<?php echo $post["id"] ?>">
-                            <a name="post<?php echo $post["id"] ?>"></a>
+                            
+                            
                         </form>
-                        <form action="commenti.php" class="comment-form" method="POST">
-                            <a href="commenti.php">
-                            <button type="button"
-                                onclick="commenti.php"
-                                aria-label="Commenti"
-                                class="btn">
+                        <form action="template/commenti.php" method="GET">
+                            <button type="submit" aria-label="Commenti" class="btn">
                                 <i class="far fa-comment px-4 py-1"></i>
                             </button>
                             <input type="hidden" name="postId" value="<?php echo $post["id"] ?>">
-                            </a> 
                         </form>
                     </div>
                 </div>

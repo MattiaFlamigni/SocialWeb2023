@@ -586,6 +586,26 @@ class DatabaseHelper {
         return 'nessuna descrizione';
         
     }*/
+
+    public function inserisciCommento($commento, $id){
+        try {
+            $stmt = $this->db->prepare("INSERT INTO commenti (username, testo, ID_immagine) VALUES (?, ?, ?)");
+    
+            // Assicurati di avere un'informazione dell'utente da qualche parte, ad esempio nella sessione
+            // In questo esempio, sto assumendo che ci sia un campo 'username' nell'array di sessione
+            $username = $_SESSION['username'];
+
+            $stmt->bind_param('ssi', $username, $commento, $id);
+    
+            $stmt->execute();
+    
+            return true; // Restituiamo true per indicare il successo dell'inserimento
+        } catch (PDOException $e) {
+            // Gestisci l'eccezione, ad esempio registrandola o visualizzandola
+            error_log('Errore durante l\'inserimento del commento: ' . $e->getMessage());
+            return false; // Restituiamo false per indicare il fallimento dell'inserimento
+        }
+    }
 }
 
 ?>
