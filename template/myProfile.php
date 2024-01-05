@@ -75,7 +75,7 @@
                 <?php 
                 if(!empty($templateParams["posts"])){
                     foreach ($templateParams["posts"] as $post) : ?>
-                <div class="col"><img data-description="<?php /*echo $dbh->getDescription($post["id"])*/  echo $post["descrizione"];?>" src="<?php echo glob(UPLOAD_DIR . $post["id"] . ".*")[0]; ?>" class="img-fluid rounded m-1"
+                <div class="col"><img data-post-id="<?php echo $post["id"]; ?>"  data-description="<?php /*echo $dbh->getDescription($post["id"])*/  echo $post["descrizione"];?>" src="<?php echo glob(UPLOAD_DIR . $post["id"] . ".*")[0]; ?>" class="img-fluid rounded m-1"
                         data-like="<?php echo $dbh->getNumLikeToPost($post["id"]); ?>"></div>
                 <!--<div class="col"><img src="./img/amsterdam.jpeg" class="img-fluid rounded m-1" data-like="10"></div> !-->
                 <!-- Aggiungi questa sezione dopo la sezione delle immagini nel tuo file HTML -->
@@ -92,6 +92,7 @@
                                 <img id="selectedImage" src="#" class="img-fluid rounded mb-3" alt="Immagine">
                                 <p id="likeCount" class="text-center">Like: <span id="likeNumber">0</span></p>
                                 <p id="imageDescription" class="text-center"></p>
+                                <a id="viewCommentsBtn" class="btn btn-primary">Visualizza Commenti</a>
                             </div>
                         </div>
                     </div>
@@ -111,39 +112,15 @@
     
 
 
+    <!-- ... Il tuo HTML rimane invariato ... -->
+
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-          const imageDetailsModal = new bootstrap.Modal(document.getElementById('imageDetails'));
-          const selectedImage = document.getElementById('selectedImage');
-          const likeNumber = document.getElementById('likeNumber');
-          const imageDescription = document.getElementById('imageDescription'); // Aggiunto
-      
-          // Aggiungi un gestore di eventi clic a tutte le immagini
-          const images = document.querySelectorAll('.img-fluid');
-          images.forEach(function (image) {
-            image.addEventListener('click', function () {
-              // Mostra l'immagine e il numero di like nella finestra modale
-              const likeCount = this.getAttribute('data-like') || 0;
-              const description = this.getAttribute('data-description') || ''; // Aggiunto
-              selectedImage.src = this.src;
-              likeNumber.textContent = likeCount;
-              imageDescription.textContent = description;
-              imageDetailsModal.show();
-            });
-          });
-        });
-      </script>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<!-- Your existing script -->
-
-<script>
     document.addEventListener('DOMContentLoaded', function () {
         const imageDetailsModal = new bootstrap.Modal(document.getElementById('imageDetails'));
         const selectedImage = document.getElementById('selectedImage');
         const likeNumber = document.getElementById('likeNumber');
+        const imageDescription = document.getElementById('imageDescription');
+        const viewCommentsBtn = document.getElementById('viewCommentsBtn'); // Dichiarato qui
 
         // Aggiungi un gestore di eventi clic a tutte le immagini
         const images = document.querySelectorAll('.img-fluid');
@@ -151,11 +128,23 @@
             image.addEventListener('click', function () {
                 // Mostra l'immagine e il numero di like nella finestra modale
                 const likeCount = this.getAttribute('data-like') || 0;
+                const description = this.getAttribute('data-description') || '';
                 selectedImage.src = this.src;
                 likeNumber.textContent = likeCount;
+                imageDescription.textContent = description;
+
+                // Aggiungi il link all'immagine selezionata
+                const postId = this.getAttribute('data-post-id');
+                viewCommentsBtn.setAttribute('href', 'template/commenti.php?postId=' + postId);
+
+                // Mostra la finestra modale
                 imageDetailsModal.show();
             });
         });
     });
 </script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 
