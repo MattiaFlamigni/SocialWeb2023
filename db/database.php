@@ -261,7 +261,6 @@ class DatabaseHelper {
     
             $posts = array();
             while($row = $result->fetch_assoc()){
-                // TODO: usa la classe Post (vedi db/post.php) così da restituire gli oggetti di tale classe invece degli ID delle immagini
                 $posts[] = $row;
             }
     
@@ -620,6 +619,18 @@ class DatabaseHelper {
         return $row["mail"];
     }
 
+    public function getProPic($username) {
+        $stmt = $this->db->prepare("SELECT immagine_profilo FROM utenti WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['immagine_profilo'];
+        } else {
+            return "user";
+        }
+    }
 
 }
 

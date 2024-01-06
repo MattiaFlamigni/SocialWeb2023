@@ -1,12 +1,8 @@
-
-
-
-    <?php
-    if(!isset($_SESSION["username"])){
-        header("Location: ./index.php");
-        exit();
-    }?>
-
+<?php
+if(!isset($_SESSION["username"])){
+    header("Location: ./index.php");
+    exit();
+}?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -25,19 +21,13 @@
 
     <section class="d-flex justify-content-center">
         <div class="container-fluid mt-3 col-md-12">
-            <!-- <div class="rounded-top bg-body-tertiary col-12 col-md-9 mx-auto">
-                
-                    <img src="img/user.jpg" class="rounded-circle  ms-5 mt-3" alt="utente" width="50" height="50"> Diego Ciprianetti
-            </div><!-->
-
             <div class="row row-cols-1 bg-body-tertiary col-md-9  mx-auto pb-3 pt-3" >
-                <div class="col  text-center"><img src="img/user.jpg" class="rounded-circle" alt="utente" width="50"
+                <div class="col  text-center"><img src="<?php echo glob("profile_pic/" . $dbh->getProPic($_SESSION["username"]) . ".*")[0]?>" class="rounded-circle" alt="utente" width="50"
                         height="50"><label class=""><?php 
                                                     if(isset($templateParams["utente"]["nome"])){
                                                         echo $templateParams["utente"]["nome"]." ". $templateParams["utente"]["cognome"];
                                                     } ?>  </label>
                 </div>
-
             </div>
 
             <div class="container-fluid text-center bg-body-tertiary col-12 col-md-9 mx-auto" >
@@ -75,10 +65,8 @@
                 <?php 
                 if(!empty($templateParams["posts"])){
                     foreach ($templateParams["posts"] as $post) : ?>
-                <div class="col"><img data-post-id="<?php echo $post["id"]; ?>"  data-description="<?php /*echo $dbh->getDescription($post["id"])*/  echo $post["descrizione"];?>" src="<?php echo glob(UPLOAD_DIR . $post["id"] . ".*")[0]; ?>" class="img-fluid rounded m-1"
+                <div class="col"><img data-post-id="<?php echo $post["id"]; ?>"  data-description="<?php echo $post["descrizione"];?>" src="<?php echo glob(UPLOAD_DIR . $post["id"] . ".*")[0]; ?>" class="img-fluid rounded m-1"
                         data-like="<?php echo $dbh->getNumLikeToPost($post["id"]); ?>"></div>
-                <!--<div class="col"><img src="./img/amsterdam.jpeg" class="img-fluid rounded m-1" data-like="10"></div> !-->
-                <!-- Aggiungi questa sezione dopo la sezione delle immagini nel tuo file HTML -->
                 <div id="imageDetails" class="modal fade" tabindex="-1" aria-labelledby="imageDetailsLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
@@ -108,11 +96,6 @@
         </div>
 
             </section>
-
-    
-
-
-    <!-- ... Il tuo HTML rimane invariato ... -->
 
     <script>
     document.addEventListener('DOMContentLoaded', function () {
