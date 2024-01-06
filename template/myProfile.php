@@ -9,10 +9,10 @@ if(!isset($_SESSION["username"])){
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <div class="collapse navbar-collapse justify-content-end ms-3" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="changePassword.php">Reset Password</a>
+                <a class="nav-link" href="changePassword.php">Cambia Password</a>
                 <a class="nav-link" href="util/logout.php">LogOut </a>
             </li>
         </ul>
@@ -128,6 +128,17 @@ if(!isset($_SESSION["username"])){
 </script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        const navbarNav = document.querySelector('#navbarNav');
+
+        navbarToggler.addEventListener('click', function () {
+            navbarNav.classList.toggle('show');
+        });
+    });
+</script>
 
 
