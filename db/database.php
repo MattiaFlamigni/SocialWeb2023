@@ -632,6 +632,11 @@ class DatabaseHelper {
         }
     }
 
+    public function uploadProPic($id, $username) {
+        $stmt = $this->db->prepare('UPDATE utenti SET immagine_profilo = ? WHERE username = ?');
+        $stmt->bind_param('ssss', $imageID, $description, $date, $username);
+        $stmt->execute();
+    }
 }
 
 ?>
