@@ -14,6 +14,7 @@ if(!isset($_SESSION["username"])){
             <li class="nav-item">
                 <a class="nav-link" href="changePassword.php">Cambia Password</a>
                 <a class="nav-link" href="util/logout.php">LogOut </a>
+                <a class="nav-link" href="uploadProPic.php">Cambia immagine profilo</a>
             </li>
         </ul>
     </div>

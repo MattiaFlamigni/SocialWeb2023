@@ -1,5 +1,5 @@
 <?php
-require_once("bootstrap.php");
+
 
 $templateParams["titolo"] = "Carica l'immagine di profilo";
 $templateParams["titolo_pagina"] = "Carica l'immagine di profilo";

@@ -8,4 +8,8 @@ if (!defined('UPLOAD_DIR')) {
     define('UPLOAD_DIR', './upload/');
 }
 
+if(!defined('PIC_DIR')){
+    define('PIC_DIR', './profile_pic/');
+}
+
 ?>

@@ -1,7 +1,7 @@
 <?php
 
-require_once './bootstrap.php';
-// The destination directory of uploaded images is defined in bootstrap.php as UPLOAD_DIR
+
+// The destination directory of uploaded images is defined in bootstrap.php as PIC_DIR
 
 function post_image_error() {
 	if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_FILES['image'])) {
@@ -34,36 +34,19 @@ function post_image_error() {
 	return '';
 }
 
-function post_desc_error() {
-	if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['desc'])) {
-		return 'la descrizione non è stata ricevuta';
-	}
-
-	$desc = $_POST['desc'];
-	$maxChar = 2000;
-
-	if (strlen($desc) > $maxChar) {
-		return 'la descrizione è troppo lunga, può contenere al massimo ' . $maxChar . ' caratteri';
-	}
-
-	return '';
-}
 
 // validate form at post creation
 // empty string means ok, otherwise the string contains the error
 function post_form_error() {
 	$imageValidity = post_image_error();
-	$descriptionValidity = post_desc_error();
+	
 
-	if (empty($imageValidity) && empty($descriptionValidity)) {
+	if (empty($imageValidity)) {
 		return '';
 	} else {
 		$error = '<ul>';
 		if (!empty($imageValidity)) {
 			$error .= '<li>' . $imageValidity . '</li>';
-		}
-		if (!empty($descriptionValidity)) {
-			$error .= '<li>' . $descriptionValidity . '</li>';
 		}
 		$error .= '</ul>';
 		return $error;
@@ -71,7 +54,7 @@ function post_form_error() {
 }
 
 function new_image_id() {
-	$files = scandir(UPLOAD_DIR);
+	$files = scandir(PIC_DIR);
 	for ($i = 0; $i < count($files); $i++) {
 		// remove file extensions
 		$files[$i] = preg_replace('/\\..+$/', '', $files[$i]);
@@ -87,13 +70,13 @@ function new_image_id() {
 
 // $ext can be 'png', 'jpeg', etc.
 function upload_image($id, $ext, $bytes) {
-	$newImage = fopen(UPLOAD_DIR . "$id.$ext", "w");
+	$newImage = fopen(PIC_DIR . "$id.$ext", "w");
 	fwrite($newImage, $bytes);
 	fclose($newImage);
 }
 
 function image_url($id) {
-	$filedir = UPLOAD_DIR . "$id.png";
+	$filedir = PIC_DIR . "$id.png";
 	// TODO: do not use full paths as it may expose sensitive data
 	return $filedir;
 }
