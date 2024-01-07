@@ -70,15 +70,13 @@ function new_image_id() {
 
 // $ext can be 'png', 'jpeg', etc.
 function upload_image($id, $ext, $bytes) {
-	$newImage = fopen(PIC_DIR . "$id.$ext", "w");
+	$newImage = fopen(PIC_DIR . "/$id.$ext", "w");
 	fwrite($newImage, $bytes);
 	fclose($newImage);
 }
 
-function image_url($id) {
-	$filedir = PIC_DIR . "$id.png";
-	// TODO: do not use full paths as it may expose sensitive data
-	return $filedir;
+function propic_url($id) {
+	return glob(PIC_DIR . "/$id.*")[0];
 }
 
 class Post {
