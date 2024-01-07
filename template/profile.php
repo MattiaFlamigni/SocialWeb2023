@@ -14,7 +14,7 @@
             </div><!-->
 
             <div class="row row-cols-1 bg-body-tertiary col-md-9  mx-auto pb-3 pt-3">
-                <div class="col  text-center"><img src="<?php echo glob("profile_pic/" . $dbh->getProPic($_GET["username"]) . ".*")[0]?>" class="rounded-circle" alt="utente" width="50"
+                <div class="col  text-center"><img src="<?php echo glob("profile_pic/" . $dbh->getProPic($_GET["username"]) . ".*")?>" class="rounded-circle" alt="utente" width="50"
                         height="50"><label class=""><?php if (isset($templateParams["utente"]["nome"])) {
     echo $templateParams["utente"]["nome"] . " " . $templateParams["utente"]["cognome"];
 } ?>  </label></div>
