@@ -15,12 +15,12 @@ if (count($templateParams["posts"]) > 0) {
             <div class="container-fluid mt-3">
                 <div class="rounded-top border bg-body-tertiary col-12 col-md-7 mx-auto">
                     <!-- Utente che ha condiviso la foto -->
-                    <img src="<?php echo glob("profile_pic/" . $dbh->getProPic($post["username"]) . ".*")[0] ?>" class="rounded-circle " alt="utente" width="50" height="50">
+                    <img src="<?php echo propic_url($dbh->getProPic($post["username"])); ?>" class="rounded-circle " alt="utente" width="50" height="50">
                     <?php echo str_replace("./upload/", "", UPLOAD_DIR . '/' . $post["username"]) ?>
                 </div>
                 <div class="">
                     <div class="">
-                        <img src="<?php echo glob(UPLOAD_DIR . '/' . $post["id"] . '.*')[0]; ?>"
+                        <img src="<?php echo image_url($post["id"]); ?>"
                             class="img-fluid rounded-bottom col-md-7 " alt="">
 
                     </div>

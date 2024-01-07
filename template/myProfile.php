@@ -23,7 +23,7 @@ if(!isset($_SESSION["username"])){
     <section class="d-flex justify-content-center">
         <div class="container-fluid mt-3 col-md-12">
             <div class="row row-cols-1 bg-body-tertiary col-md-9  mx-auto pb-3 pt-3" >
-                <div class="col  text-center"><a href="uploadProPic.php"><img src="<?php echo glob("profile_pic/" . $dbh->getProPic($_SESSION["username"]) . ".*")[0]?>" class="rounded-circle" alt="utente" width="50" height="50"></a><label class=""><?php 
+                <div class="col  text-center"><a href="uploadProPic.php"><img src="<?php echo propic_url($dbh->getProPic($_SESSION["username"])); ?>" class="rounded-circle" alt="utente" width="50" height="50"></a><label class=""><?php 
                                                     if(isset($templateParams["utente"]["nome"])){
                                                         echo $templateParams["utente"]["nome"]." ". $templateParams["utente"]["cognome"];
                                                     } ?>  </label>
@@ -65,7 +65,7 @@ if(!isset($_SESSION["username"])){
                 <?php 
                 if(!empty($templateParams["posts"])){
                     foreach ($templateParams["posts"] as $post) : ?>
-                <div class="col"><img data-post-id="<?php echo $post["id"]; ?>"  data-description="<?php echo $post["descrizione"];?>" src="<?php echo glob(UPLOAD_DIR . '/' . $post["id"] . ".*")[0]; ?>" class="img-fluid rounded m-1"
+                <div class="col"><img data-post-id="<?php echo $post["id"]; ?>"  data-description="<?php echo $post["descrizione"];?>" src="<?php echo image_url($post["id"]); ?>" class="img-fluid rounded m-1"
                         data-like="<?php echo $dbh->getNumLikeToPost($post["id"]); ?>"></div>
                 <div id="imageDetails" class="modal fade" tabindex="-1" aria-labelledby="imageDetailsLabel"
                     aria-hidden="true">
