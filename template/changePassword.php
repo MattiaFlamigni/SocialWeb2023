@@ -19,6 +19,7 @@
   .login-btn:hover {
     background-color: #6a2c70;
   }
+  
 </style>
 <div class="container pt-1">
   <div class="row justify-content-center">

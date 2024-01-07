@@ -1,11 +1,3 @@
-
-    <style>
-        .liked {
-            color: red;
-        }
-    </style>
-
-
 <?php
 require("bootstrap.php");
 if (count($templateParams["posts"]) > 0) {

@@ -64,8 +64,9 @@ if(!isset($_SESSION["username"])){
                 <?php 
                 if(!empty($templateParams["posts"])){
                     foreach ($templateParams["posts"] as $post) : ?>
-                <div class="col"><img data-post-id="<?php echo $post["id"]; ?>"  data-description="<?php echo $post["descrizione"];?>" src="<?php echo glob(UPLOAD_DIR . $post["id"] . ".*")[0]; ?>" class="img-fluid rounded m-1"
-                        data-like="<?php echo $dbh->getNumLikeToPost($post["id"]); ?>"></div>
+                <div class="col"><img data-post-id="<?php echo $post["id"]; ?>"  data-description="<?php echo $post["descrizione"];?>" src="<?php echo glob(UPLOAD_DIR . $post["id"] . ".*")[0]; ?>" alt="" class="img-fluid rounded m-1"
+                        data-like="<?php echo $dbh->getNumLikeToPost($post["id"]); ?>">
+                </div>
                 <div id="imageDetails" class="modal fade" tabindex="-1" aria-labelledby="imageDetailsLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
@@ -84,6 +85,7 @@ if(!isset($_SESSION["username"])){
                         </div>
                     </div>
                 </div>
+            </div>
 
             <?php endforeach; ?>
 

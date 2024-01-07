@@ -1,25 +1,3 @@
-<style>
-  body {
-    background: linear-gradient(45deg, #2d6d84, #9d4edd);
-    height: 100vh;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-  }
-
-  .login-container {
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-  }
-
-  .login-btn {
-    background-color: #9d4edd;
-    transition: background-color 0.3s ease-in-out;
-  }
-
-  .login-btn:hover {
-    background-color: #6a2c70;
-  }
-</style>
 <div class="container pt-1">
   <div class="row justify-content-center">
     <div class="col-md-6 login-container bg-transparent rounded overflow-hidden" style="max-width: 400px;">
