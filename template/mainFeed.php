@@ -8,6 +8,10 @@
 
 <?php
 require("bootstrap.php");
+
+require_once 'util/post.php';
+require_once 'util/proPic.php';
+
 if (count($templateParams["posts"]) > 0) {
     foreach ($templateParams["posts"] as $post):
         ?>

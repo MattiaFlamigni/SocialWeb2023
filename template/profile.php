@@ -1,7 +1,11 @@
 
 
 
-<?php if (!isset($_SESSION["username"])) {
+<?php
+require_once 'util/post.php';
+require_once 'util/proPic.php';
+
+if (!isset($_SESSION["username"])) {
     header("Location: ./index.php");
     exit();
 } ?>
