@@ -96,6 +96,10 @@ function image_url($id) {
 	return glob(UPLOAD_DIR . "/$id.*")[0];
 }
 
+function propic_url($id) {
+	return glob(PIC_DIR . "/$id.*")[0];
+}
+
 class Post {
 	public $url; // post image URL
 	public $user;

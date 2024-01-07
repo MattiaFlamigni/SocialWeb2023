@@ -19,7 +19,7 @@
 <?php
 
 require_once './bootstrap.php';
-require_once 'util/proPic.php';
+require_once 'util/post.php';
 
 
 if (!empty($_POST)) {
