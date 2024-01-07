@@ -8,7 +8,6 @@ mail.addEventListener("input", function() {
         //document.getElementById("registrazioneBtn").disabled = false;
     } else {
         mailResult.innerHTML = "";  // Resetta il messaggio se la password è valida
-        document.getElementById("registrazioneBtn").classList.remove("disabled");
-        
+        document.getElementById("registrazioneBtn").classList.remove("disabled");     
     }
 });
