@@ -11,7 +11,7 @@ if (count($templateParams["posts"]) > 0) {
                 <div class="rounded-top border bg-body-tertiary col-12 col-md-7 mx-auto">
                     <!-- Utente che ha condiviso la foto -->
                     <img src="<?php echo propic_url($dbh->getProPic($post["username"])); ?>" class="rounded-circle " alt="utente" width="50" height="50">
-                    <?php echo str_replace("./upload/", "", UPLOAD_DIR . '/' . $post["username"]) ?>
+                    <?php echo($post["username"]) ?>
                 </div>
                 <div class="">
                     <div class="">
