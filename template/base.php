@@ -6,11 +6,11 @@
     <?php switch($templateParams["nome"]) {
 
         case "login.html" :
-            echo('<link href="CSS/login.css" rel="stylesheet">');
+            echo('<link href="CSS/authentication.css" rel="stylesheet" type="text/css">');
             break;
 
         case "registrati.php" :
-            echo('<link href="CSS/registrati.css" rel="stylesheet">');
+            echo('<link href="CSS/authentication.css" rel="stylesheet">');
             break;
 
         case "mainFeed.php" :
