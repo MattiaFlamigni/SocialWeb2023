@@ -9,7 +9,7 @@ if($comments != null) {
 
         <section class="comment-section">
             <div class="comment">
-                <img src="../img/user.jpg" class="rounded-circle" class="userpfp" alt="utente" width="40" height="40">
+                <img src="../upload/1.jpeg" class="rounded-circle" class="userpfp" alt="utente" width="40" height="40">
                 <?php echo $comment["username"]?>
                 <p class="comment-text"><?php echo $comment["testo"]?></p>
             </div>

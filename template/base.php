@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php switch($templateParams["nome"]) {
 
+
+
+
+
         case "login.html" :
             echo('<link href="CSS/authentication.css" rel="stylesheet" type="text/css">');
             break;
