@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col mt-3">
-			<form action="createPost.php" method="post" enctype="multipart/form-data">
+			<form action="uploadProPic.php" method="post" enctype="multipart/form-data">
 				<label class="form-label" for="image"> Scegli un'immagine </label>
 				<div class="input-group mb-3">
 					<input type="file" class="form-control" name="image" id="image" accept="image/*">
@@ -17,7 +17,7 @@
 	</div>
 	<div class="row">
 <?php
-require_once 'util/post.php';
+
 require_once './bootstrap.php';
 require_once 'util/post.php';
 

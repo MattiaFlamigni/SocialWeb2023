@@ -1,4 +1,4 @@
-UTENTI(nome, cognome,password, mail, PK:username )
+UTENTI(nome, cognome, immagine_profilo, password, mail, PK:username )
 
 IMMAGINI(descrizione, data, PK:ID, username:UTENTI)
 
@@ -24,8 +24,10 @@ CREATE TABLE UTENTI (
     username VARCHAR(50) PRIMARY KEY,
     nome VARCHAR(50),
     cognome VARCHAR(50),
+    immagine_profilo INT,
     password VARCHAR(50),
-    mail VARCHAR(50)
+    mail VARCHAR(50),
+    FOREIGN KEY (immagine_profilo) REFERENCES IMMAGINI(ID)
 );
 
 -- Tabella IMMAGINI

@@ -429,10 +429,10 @@ class DatabaseHelper {
         $stmt = $this->db->prepare("SELECT immagine_profilo FROM utenti WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
-        $result = $stmt->get_result();
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            return $row['immagine_profilo'];
+        $stmt->bind_result($id);
+
+        if ($stmt->fetch()) {
+            return $id;
         } else {
             return "user";
         }

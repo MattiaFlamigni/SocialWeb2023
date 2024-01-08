@@ -1,4 +1,6 @@
 <?php
+require_once 'util/post.php';
+
 if(!isset($_SESSION["username"])){
     header("Location: ./index.php");
     exit();
@@ -14,6 +16,7 @@ if(!isset($_SESSION["username"])){
             <li class="nav-item">
                 <a class="nav-link" href="changePassword.php">Cambia Password</a>
                 <a class="nav-link" href="util/logout.php">LogOut </a>
+                <a class="nav-link" href="uploadProPic.php">Cambia immagine profilo</a>
             </li>
         </ul>
     </div>
@@ -22,7 +25,7 @@ if(!isset($_SESSION["username"])){
     <section class="d-flex justify-content-center">
         <div class="container-fluid mt-3 col-md-12">
             <div class="row row-cols-1 bg-body-tertiary col-md-9  mx-auto pb-3 pt-3" >
-                <div class="col  text-center"><a href="uploadProPic.php"><img src="<?php echo glob("profile_pic/" . $dbh->getProPic($_SESSION["username"]) . ".*")[0]?>" class="rounded-circle" alt="utente" width="50" height="50"></a><label class=""><?php 
+                <div class="col  text-center"><a href="uploadProPic.php"><img src="<?php echo propic_url($dbh->getProPic($_SESSION["username"])); ?>" class="rounded-circle" alt="utente" width="50" height="50"></a><label class=""><?php 
                                                     if(isset($templateParams["utente"]["nome"])){
                                                         echo $templateParams["utente"]["nome"]." ". $templateParams["utente"]["cognome"];
                                                     } ?>  </label>

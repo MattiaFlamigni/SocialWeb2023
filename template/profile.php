@@ -1,7 +1,10 @@
 
 
 
-<?php if (!isset($_SESSION["username"])) {
+<?php
+require_once 'util/post.php';
+
+if (!isset($_SESSION["username"])) {
     header("Location: ./index.php");
     exit();
 } ?>
@@ -14,7 +17,7 @@
             </div><!-->
 
             <div class="row row-cols-1 bg-body-tertiary col-md-9  mx-auto pb-3 pt-3">
-                <div class="col  text-center"><img src="<?php echo glob("profile_pic/" . $dbh->getProPic($_GET["username"]) . ".*")[0]?>" class="rounded-circle" alt="utente" width="50"
+                <div class="col  text-center"><img src="<?php echo propic_url($dbh->getProPic($_GET["username"])); ?>" class="rounded-circle" alt="utente" width="50"
                         height="50"><label class=""><?php if (isset($templateParams["utente"]["nome"])) {
     echo $templateParams["utente"]["nome"] . " " . $templateParams["utente"]["cognome"];
 } ?>  </label></div>
@@ -81,7 +84,7 @@ if ($isFollowing) {
     foreach ($templateParams["posts"] as $post): ?>
 
 
-                <div class="col"><img src="<?php echo glob(UPLOAD_DIR . $post["id"] . ".*")[0]; ?>" class="img-fluid rounded m-1"
+                <div class="col"><img src="<?php echo image_url($post["id"]); ?>" class="img-fluid rounded m-1"
                         data-like="<?php echo $dbh->getNumLikeToPost($post["id"]); ?>"></div>
                     <!--<div class="col"><img src="./img/amsterdam.jpeg" class="img-fluid rounded m-1" data-like="10"></div> !-->
                     <!-- Aggiungi questa sezione dopo la sezione delle immagini nel tuo file HTML -->
