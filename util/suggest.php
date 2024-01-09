@@ -11,19 +11,11 @@ foreach ($searchResults as $row) {
     echo '
         <div class="card mb-4">
             <div class="row g-0">
-                
                 <div class="col-md-10">
-                    <div class="card-body">';
-                    
-                    if($row["username"] &&  $profilePicURL = $dbh->getProPic($row["username"])){
-                        echo '<img src="' . propic_url($profilePicURL) . '" class=" rounded-circle" alt="User Image" width="50" height="50">';
-                        
-                    }else{
-                        echo '<img src="profile_pic/user.jpg" class=" rounded-circle" alt=""  width="50" height="50">';
-                    }
-                    
+                    <div class="card-body">
 
-                    echo '
+                        <img src="' . propic_url($dbh->getProPic($row["username"])) . '" class=" rounded-circle" alt="User Image" width="50" height="50">
+
                     <h3 class="card-title"><a href="profile.php?username=' . $row["username"] . '" class="text-decoration-none text-dark">' . $row["username"] . '</a></h3>
                         <p class="card-text">' . $row["nome"] . ' ' . $row["cognome"] . '</p>
                     </div>
