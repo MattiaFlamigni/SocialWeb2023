@@ -152,8 +152,12 @@ function image_url($id) {
 }
 
 function propic_url($id) {
+	if ($id === '' || is_null($id)) {
+		return PIC_DIR . '/user.jpg';
+	}
+
 	$g = glob(PIC_DIR . "/$id.*");
-	if (count($g) != 0 && $id == '') {
+	if (count($g) != 0) {
 		return $g[0];
 	}
 
