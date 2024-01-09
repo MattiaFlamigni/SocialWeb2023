@@ -126,12 +126,21 @@ if (count($templateParams["posts"]) > 0) {
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        //controlla se alla foto è stato messo mi piace
 
-document.addEventListener("DOMContentLoaded", function () {
+        let likeButtons = document.querySelectorAll('.like-form button');
 
-    //controlla se alla foto è stato messo mi piace
-});
+        likeButtons.forEach(function (likeButton) {
+            if (likeButton.classList.contains("liked")) {
+                likeButton.style.color = "red";
+            }
+        });
+    });
 </script>
+
+
+
 
 
 
