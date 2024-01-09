@@ -125,6 +125,14 @@ if (count($templateParams["posts"]) > 0) {
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    //controlla se alla foto è stato messo mi piace
+});
+</script>
+
 
 
 

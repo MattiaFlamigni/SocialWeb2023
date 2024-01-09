@@ -30,7 +30,7 @@ if (!empty($_POST)) {
 		$fileContent = file_get_contents($_FILES['image']['tmp_name']);
 
 		upload_image($id, $ext, $fileContent);
-		$dbh->uploadPost($id, $_POST['desc'], date('Y-m-d'), $_COOKIE['user']);
+		$dbh->uploadPost($id, $_SESSION['username']);
 		echo '<p>Il tuo post sarà visibile tra un attimo, ora puoi chiudere questa pagina.</p>';
 	} else {
 		echo '<p>Si sono verificati uno o più errori elencati di seguito:</p>';
