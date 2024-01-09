@@ -5,11 +5,11 @@ $dbh = new DatabaseHelper("localhost", "root", "", "social", 3306);
 
 
 if (!defined('UPLOAD_DIR')) {
-    define('UPLOAD_DIR', './upload');
+    define('UPLOAD_DIR', 'upload');
 }
 
 if(!defined('PIC_DIR')){
-    define('PIC_DIR', './profile_pic');
+    define('PIC_DIR', 'profile_pic');
 }
 
 ?>
