@@ -25,10 +25,20 @@ if(!isset($_SESSION["username"])){
     <section class="d-flex justify-content-center">
         <div class="container-fluid mt-3 col-md-12">
             <div class="row row-cols-1 bg-body-tertiary col-md-9  mx-auto pb-3 pt-3" >
-                <div class="col  text-center"><a href="uploadProPic.php"><img src="<?php echo propic_url($dbh->getProPic($_SESSION["username"])); ?>" class="rounded-circle" alt="utente" width="50" height="50"></a><label class=""><?php 
-                                                    if(isset($templateParams["utente"]["nome"])){
-                                                        echo $templateParams["utente"]["nome"]." ". $templateParams["utente"]["cognome"];
-                                                    } ?>  </label>
+                <div class="col  text-center">
+
+                    <?php if($profilePicURL = $dbh->getProPic($_SESSION["username"])){
+                        echo '<img src="' . propic_url($profilePicURL) . '" class=" rounded-circle" alt="User Image" width="50" height="50">';
+                        
+                    }else{
+                        echo '<img src="profile_pic/user.jpg" class="rounded-circle" alt="" width="50" height="50">';
+                    }
+                    
+                    
+    
+                    if(isset($templateParams["utente"]["nome"])){
+                        echo $templateParams["utente"]["nome"]." ". $templateParams["utente"]["cognome"];
+                     } ?>  </label>
                 </div>
             </div>
 
