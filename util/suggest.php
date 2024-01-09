@@ -1,7 +1,7 @@
 <?php
 require_once("../db/database.php");
 include_once("../bootstrap.php");
-include_once("bootstrap.php")
+include_once("bootstrap.php");
 include_once("post.php");
 
 $userInput = $_GET['query'];
