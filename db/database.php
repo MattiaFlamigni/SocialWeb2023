@@ -103,14 +103,13 @@ class DatabaseHelper {
 
     // fetch posts liked by a user from the server as URLs
     public function fetchLikedPosts($username) {
-        $stmt = $this->db->prepare('SELECT immagini.id, immagini.username, descrizione, data FROM immagini JOIN likes ON likes.ID_immagine = immagini.id WHERE likes.username = ?;');
+        $stmt = $this->db->prepare('SELECT immagini.id, immagini.username, immagini.descrizione, immagini.data, utenti.immagine_profilo data FROM immagini JOIN likes ON likes.ID_immagine = immagini.id JOIN utenti ON immagini.username = utenti.username WHERE likes.username = ?;');
         $stmt->bind_param('s', $username);
         $stmt->execute();
-        $stmt->bind_result($id, $user, $desc, $date);
+        $stmt->bind_result($id, $user, $desc, $date, $propicID);
         $posts = [];
         while ($stmt->fetch()) {
-            // TODO: add user picture instead of "#"
-            $posts[] = new Post(image_url($id), $user, "#", $desc, $date);
+            $posts[] = new Post(image_url($id), $user, propic_url($propicID), $desc, $date);
         }
         return $posts;
     }
