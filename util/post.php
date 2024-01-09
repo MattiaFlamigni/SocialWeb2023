@@ -163,7 +163,7 @@ function propic_url($id) {
 
 	$g = glob('../' . PIC_DIR . "/$id.*");
 	if (count($g) != 0) {
-		return $g[0];
+		return str_replace('../', '', $g[0]);
 	}
 
 	return PIC_DIR . '/user.jpg';
