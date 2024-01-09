@@ -9,7 +9,7 @@ if (isset($_GET['username'])) {
 
     // Ora puoi utilizzare $username come necessario
     $templateParams["titolo"] = "Profilo";
-    $templateParams["titolo_pagina"] = "Profilo";
+    $templateParams["titolo_pagina"] = "";
     $templateParams["nome"] = "profile.php";
 
     // Passa l'username a getPostsByUser e getUserByUsername
