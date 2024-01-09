@@ -153,10 +153,16 @@ function image_url($id) {
 
 function propic_url($id) {
 	$g = glob(PIC_DIR . "/$id.*");
-	if (count($g) == 0 || $id == '') {
-		return PIC_DIR . '/user.jpg';
+	if (count($g) != 0 && $id == '') {
+		return $g[0];
 	}
-	return $g[0];
+
+	$g = glob('../' . PIC_DIR . "/$id.*");
+	if (count($g) != 0) {
+		return $g[0];
+	}
+
+	return PIC_DIR . '/user.jpg';
 }
 
 class Post {

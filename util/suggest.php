@@ -14,7 +14,7 @@ foreach ($searchResults as $row) {
                 <div class="col-md-10">
                     <div class="card-body">
 
-                        <img src="' . propic_url($dbh->getProPic($row["immagine_profilo"])) . '" class=" rounded-circle" alt="User Image" width="50" height="50">
+                        <img src="' . propic_url($row["immagine_profilo"]) . '" class=" rounded-circle" alt="User Image" width="50" height="50">
 
                     <h3 class="card-title"><a href="profile.php?username=' . $row["username"] . '" class="text-decoration-none text-dark">' . $row["username"] . '</a></h3>
                         <p class="card-text">' . $row["nome"] . ' ' . $row["cognome"] . '</p>
