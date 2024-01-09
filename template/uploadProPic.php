@@ -25,7 +25,7 @@ require_once 'util/post.php';
 if (!empty($_POST)) {
 	$error = post_form_error();
 	if (empty($error)) {
-		$id = new_image_id();
+		$id =  new_propic_id();
 		$ext = preg_replace('/^.+\\./', '', $_FILES['image']['name']);
 		$fileContent = file_get_contents($_FILES['image']['tmp_name']);
 
