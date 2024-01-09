@@ -36,8 +36,6 @@ if (!empty($_POST)) {
 		echo '<p>Si sono verificati uno o più errori elencati di seguito:</p>';
 		echo $error;
 	}
-}else{
-	echo ("errore");
 }
 ?>
 	</div>
