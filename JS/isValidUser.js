@@ -1,11 +1,11 @@
 document.getElementById("username").addEventListener("input", function() {
-    var username = this.value;
-    var resultContainer = document.getElementById("username-check-result");
-    var registrazioneBtn = document.getElementById("registrazioneBtn");
+    let username = this.value;
+    let resultContainer = document.getElementById("username-check-result");
+    let registrazioneBtn = document.getElementById("registrazioneBtn");
     // Esegui la verifica solo se l'input è lungo almeno 3 caratteri
     if (username.length >= 3) {
         // Esegui una richiesta AJAX per verificare l'username
-        var xhr = new XMLHttpRequest();
+        let xhr = new XMLHttpRequest();
         xhr.open("POST", "check_username.php", true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function() {
