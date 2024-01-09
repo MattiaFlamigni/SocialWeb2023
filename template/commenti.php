@@ -32,7 +32,7 @@ if($comments != null) {
 <?php }?>
 
 
-    <form action="../util/salva_commento.php?postId=<?php echo $_GET["postId"]; ?>" class="comment-bar" 
+    <form action="util/salva_commento.php?postId=<?php echo $_GET["postId"]; ?>" class="comment-bar" 
             style="width: 100%;
             padding: 10px;
             box-sizing: border-box;

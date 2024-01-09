@@ -28,5 +28,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 
-header("Location: ../template/commenti.php?postId=".$postId);
+header("Location: ../commenti.php?postId=".$postId);
 ?>
