@@ -122,7 +122,7 @@ class DatabaseHelper {
 
     public function searchQuery($userInput) {
         $userInputWithWildcards = '%' . $userInput . '%';
-        $stmt = $this->db->prepare("SELECT username, nome, cognome FROM utenti WHERE username LIKE ? AND username != ?");
+        $stmt = $this->db->prepare("SELECT username, nome, cognome, immagine_profilo FROM utenti WHERE username LIKE ? AND username != ?");
         $stmt->bind_param("ss", $userInputWithWildcards, $_SESSION["username"]);
         $stmt->execute();
         $result = $stmt->get_result();
