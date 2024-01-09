@@ -97,7 +97,11 @@ function image_url($id) {
 }
 
 function propic_url($id) {
-	return glob(PIC_DIR . "/$id.*")[0];
+	$g = glob(PIC_DIR . "/$id.*");
+	if ($g == false) {
+		return PIC_DIR . '/user.jpg';
+	}
+	return $g[0];
 }
 
 class Post {
