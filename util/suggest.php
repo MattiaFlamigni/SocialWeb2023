@@ -2,6 +2,7 @@
 require_once("../db/database.php");
 require_once("../bootstrap.php");
 include_once("post.php");
+include_once("util/post.php");
 
 $userInput = $_GET['query'];
 $searchResults = $dbh->searchQuery($userInput);
