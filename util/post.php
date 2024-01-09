@@ -85,6 +85,21 @@ function new_image_id() {
 	return $newID;
 }
 
+function new_propic_id() {
+	$files = scandir(PIC_DIR);
+	for ($i = 0; $i < count($files); $i++) {
+		// remove file extensions
+		$files[$i] = preg_replace('/\\..+$/', '', $files[$i]);
+	}
+	$newID = '0';
+	while (in_array($newID, $files)) {
+		// increment ID
+		$newID = (string) (((int) $newID) + 1);
+	}
+
+	return $newID;
+}
+
 // $ext can be 'png', 'jpeg', etc.
 function upload_image($id, $ext, $bytes) {
 	$newImage = fopen(UPLOAD_DIR . "/$id.$ext", "w");
