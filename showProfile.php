@@ -2,7 +2,7 @@
 require_once("bootstrap.php");
 
 $templateParams["titolo"] = "Visualizza utenti";
-$templateParams["titolo_pagina"] = "Visualizza utenti";
+$templateParams["titolo_pagina"] = "";
 $templateParams["nome"] = "showProfile.php";
 
 

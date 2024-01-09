@@ -3,7 +3,7 @@ require_once("bootstrap.php");
 
 
 $templateParams["titolo"] = "Profilo";
-$templateParams["titolo_pagina"] = "Profilo";
+$templateParams["titolo_pagina"] = "";
 $templateParams["nome"] = "myProfile.php";
 
 $templateParams["posts"] = $dbh->getPostsByUser($_SESSION["username"]);

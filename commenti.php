@@ -3,7 +3,7 @@ require_once("bootstrap.php");
 
 $postToComment = $_GET['postId'];
 $templateParams["titolo"] = "commenti";
-$templateParams["titolo_pagina"] = "commenti";
+$templateParams["titolo_pagina"] = "";
 $templateParams["nome"] = "commenti.php";
 
 /*$templateParams["posts"] = $dbh->getPostsByUser($_SESSION["username"]);

@@ -1,7 +1,7 @@
 <?php
 require_once("../db/database.php");
 require_once("../bootstrap.php");
-
+include_once("post.php");
 
 $userInput = $_GET['query'];
 $searchResults = $dbh->searchQuery($userInput);
@@ -33,8 +33,8 @@ foreach ($searchResults as $row) {
 
 
 
-function propic_url($id) {
+/*function propic_url($id) {
 	return glob(PIC_DIR . "/$id.*")[0];
 }
-?>
+?>*/
 

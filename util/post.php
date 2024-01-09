@@ -1,6 +1,7 @@
 <?php
 
-require_once './bootstrap.php';
+include_once 'bootstrap.php';
+include_once '../bootstrap.php';
 // The destination directory of uploaded images is defined in bootstrap.php as UPLOAD_DIR
 
 function post_image_error() {

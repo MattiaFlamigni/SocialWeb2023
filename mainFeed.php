@@ -2,8 +2,8 @@
 require_once("bootstrap.php");
 
 
-$templateParams["titolo"] = "feed";
-$templateParams["titolo_pagina"] = "feed";
+$templateParams["titolo"] = "Home";
+$templateParams["titolo_pagina"] = "";
 $templateParams["nome"] = "mainFeed.php";
 
 $templateParams["posts"] = $dbh->fetchHomePosts($_SESSION["username"]);
