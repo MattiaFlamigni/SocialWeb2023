@@ -48,14 +48,38 @@
                 <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-expand fixed-bottom ">
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                            <div class="navbar-nav mx-auto">
-                                <a class="nav-link" aria-current="page" href="mainFeed.php"><i class="fa-solid fa-house"></i></a>
-                                <a class="nav-link" aria-current="page" href="likes.php"><i class="fa-solid fa-heart px-5"></i></a>
-                                <a class="nav-link" aria-current="page" href="createPost.php"><i class="fa-solid fa-plus fs-4"></i></a>
-                                <a class="nav-link" aria-current="page" href="search.php"><i class="fa-solid fa-search px-5"></i></a>                                    
-                                <a class="nav-link" aria-current="page" href="myProfile.php?username=$_SESSION['username']"><i class="fas fa-user "></i></a>
-                                <a class="col nav-link d-flex justify-content-center" aria-current="page" href="util/logout.php"><i class="fa-solid fa-right-from-bracket mx-3"></i></a>
-                            </div>
+                        <div class="navbar-nav mx-auto">
+    <a class="nav-link" aria-current="page" href="mainFeed.php">
+        <em class="fa-solid fa-house"></em>
+        <span class="visually-hidden">Home</span>
+    </a>
+
+    <a class="nav-link" aria-current="page" href="likes.php">
+        <em class="fa-solid fa-heart px-5"></em>
+        <span class="visually-hidden">Likes</span>
+    </a>
+
+    <a class="nav-link" aria-current="page" href="createPost.php">
+        <em class="fa-solid fa-plus fs-4"></em>
+        <span class="visually-hidden">Create Post</span>
+    </a>
+
+    <a class="nav-link" aria-current="page" href="search.php">
+        <em class="fa-solid fa-search px-5"></em>
+        <span class="visually-hidden">Search</span>
+    </a>
+
+    <a class="nav-link" aria-current="page" href="myProfile.php?username=<?php echo $_SESSION['username']; ?>">
+        <em class="fas fa-user"></em>
+        <span class="visually-hidden">My Profile</span>
+    </a>
+
+    <a class="col nav-link d-flex justify-content-center" aria-current="page" href="util/logout.php">
+        <em class="fa-solid fa-right-from-bracket mx-3"></em>
+        <span class="visually-hidden">Logout</span>
+    </a>
+</div>
+
                         </div>
                     </div>
                 </nav>    

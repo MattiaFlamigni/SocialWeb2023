@@ -41,7 +41,7 @@ if (count($templateParams["posts"]) > 0) {
                                     data-post-id="<?php echo $post["id"]; ?>"
                                     aria-label="Like"
                                     class="btn <?php echo ($dbh->isLiked($_SESSION["username"], $post["id"])) ? 'liked' : ''; ?> mb-2">
-                                <i class="far fa-heart p-1"></i><span
+                                <em class="far fa-heart p-1"></em><span
                                         class="px-2"><?php echo $dbh->getNumLikeToPost($post["id"]) ?></span>
                             </button>
                             <input type="hidden" name="postId" value="<?php echo $post["id"] ?>">
@@ -50,7 +50,7 @@ if (count($templateParams["posts"]) > 0) {
                         </form>
                         <form action="template/commenti.php" method="GET">
                             <button type="submit" aria-label="Commenti" class="btn">
-                                <i class="far fa-comment px-4 py-1"></i>
+                                <em class="far fa-comment px-4 py-1"></em>
                             </button>
                             <input type="hidden" name="postId" value="<?php echo $post["id"] ?>">
                         </form>

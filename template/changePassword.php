@@ -29,25 +29,28 @@
           <h4>Reset Password</h4>
         </div>
         <div class="card-body login-form px-20">
-          <form action="util/reset.php" method="POST">
+        <form action="util/reset.php" method="POST">
 
-          <div class="mb-3">
-              <label for="oldPassword" class="form-label">Password Attuale</label>
-              <input type="oldPassword" class="form-control" id="oldPassword" name="oldPassword" required>
-              
-            </div>
-          
-            <div class="mb-3">
-              <label for="password" class="form-label">Nuova Password</label>
-              <input type="password" class="form-control" id="password" name="password" required>
-              <div id="password-check-result"></div>
-            </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Conferma Nuova Password</label>
-              <input type="password" class="form-control" id="password2" name="password" required>
-              <div id="password2-check-result"></div>
-            <button type="submit" id="registrazioneBtn" class="login-btn btn btn-primary ltext-white container-fluid disabled">Reset Password</button>
-          </form>
+<div class="mb-3">
+    <label for="oldPassword" class="form-label">Password Attuale</label>
+    <input type="password" class="form-control" id="oldPassword" name="oldPassword" required>
+</div>
+
+<div class="mb-3">
+    <label for="password" class="form-label">Nuova Password</label>
+    <input type="password" class="form-control" id="password" name="password" required>
+    <div id="password-check-result" aria-live="polite" role="status"></div>
+</div>
+
+<div class="mb-3">
+    <label for="password2" class="form-label">Conferma Nuova Password</label>
+    <input type="password" class="form-control" id="password2" name="password2" required>
+    <div id="password2-check-result" aria-live="polite" role="status"></div>
+</div>
+
+<button type="submit" id="resetBtn" class="login-btn btn btn-primary text-white container-fluid" disabled>Reset Password</button>
+</form>
+
 
           <a href="index.php" class="">Login</a>
         </div>

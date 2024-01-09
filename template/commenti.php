@@ -30,6 +30,7 @@ if($comments != null) {
             padding: 10px;
             box-sizing: border-box;
             border: 1px solid #ccc;" method="POST">
+      <label for="comment-input"></label>
       <input type="text" id="comment-input" name="commento" class="comment-input" placeholder="Scrivi un commento..." 
             style="width: 80%;
             padding: 8px;

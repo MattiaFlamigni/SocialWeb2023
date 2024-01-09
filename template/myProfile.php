@@ -77,7 +77,7 @@ if(!isset($_SESSION["username"])){
                 <?php 
                 if(!empty($templateParams["posts"])){
                     foreach ($templateParams["posts"] as $post) : ?>
-                <div class="col"><img data-post-id="<?php echo $post["id"]; ?>"  data-description="<?php echo $post["descrizione"];?>" src="<?php echo image_url($post["id"]); ?>" class="img-fluid rounded m-1"
+                <div class="col"><img data-post-id="<?php echo $post["id"]; ?>"  data-description="<?php echo $post["descrizione"];?>" src="<?php echo image_url($post["id"]); ?>" class="img-fluid rounded m-1" alt=""
                         data-like="<?php echo $dbh->getNumLikeToPost($post["id"]); ?>"></div>
                 <div id="imageDetails" class="modal fade" tabindex="-1" aria-labelledby="imageDetailsLabel"
                     aria-hidden="true">
@@ -89,7 +89,7 @@ if(!isset($_SESSION["username"])){
                                     aria-label="Chiudi"></button>
                             </div>
                             <div class="modal-body">
-                                <img id="selectedImage" src="#" class="img-fluid rounded mb-3" alt="Immagine">
+                                <img id="selectedImage" src="#" class="img-fluid rounded mb-3" alt="">
                                 <p id="likeCount" class="text-center">Like: <span id="likeNumber">0</span></p>
                                 <p id="imageDescription" class="text-center"></p>
                                 <a id="viewCommentsBtn" class="btn btn-primary">Visualizza Commenti</a>

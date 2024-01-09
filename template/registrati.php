@@ -12,11 +12,11 @@
                 <input type="text" class="form-control" id="name" name="name" required>
             </div>
             <div class="mb-3">
-                <label for="name" class="form-label">Cognome</label>
+                <label for="surname" class="form-label">Cognome</label>
                 <input type="text" class="form-control" id="surname" name="surname" required>
             </div>
               <div class="mb-3">
-                <label for="name" class="form-label">Mail</label>
+                <label for="mail" class="form-label">Mail</label>
                 <input type="text" class="form-control" id="mail" name="mail" required>
                 <div id = "mail-check-result"></div>
               </div>
@@ -31,7 +31,7 @@
               <div id="password-check-result"></div>
             </div>
             <div class="mb-3">
-              <label for="password" class="form-label">Conferma Password</label>
+              <label for="password2" class="form-label">Conferma Password</label>
               <input type="password" class="form-control" id="password2" name="password" required>
               <div id="password2-check-result"></div>
             </div>
