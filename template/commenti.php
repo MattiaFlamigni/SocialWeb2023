@@ -1,6 +1,7 @@
 <?php 
 
-require("../bootstrap.php");
+require("bootstrap.php");
+require("util/post.php");
 
 $comments=$dbh->listComments($_GET["postId"]);
 
@@ -9,8 +10,14 @@ if($comments != null) {
 
         <section class="comment-section">
             <div class="comment">
-                <img src="../upload/1.jpeg" class="rounded-circle" class="userpfp" alt="utente" width="40" height="40">
-                <?php echo $comment["username"]?>
+                <?php 
+                if($profilePicURL = $dbh->getProPic($comment["username"])){
+                  echo '<img src="' . propic_url($profilePicURL) . '" class=" rounded-circle" alt="User Image" width="50" height="50">';
+                  
+                }else{
+                  echo '<img src="profile_pic/user.jpg" class=" rounded-circle" alt=""  width="50" height="50">';
+                }
+                echo $comment["username"]?>
                 <p class="comment-text"><?php echo $comment["testo"]?></p>
             </div>
         </section>

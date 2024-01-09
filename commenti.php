@@ -1,7 +1,7 @@
 <?php
 require_once("bootstrap.php");
 
-$postToComment = $_POST['postId'];
+$postToComment = $_GET['postId'];
 $templateParams["titolo"] = "commenti";
 $templateParams["titolo_pagina"] = "commenti";
 $templateParams["nome"] = "commenti.php";

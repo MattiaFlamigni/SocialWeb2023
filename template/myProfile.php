@@ -130,7 +130,7 @@ if(!isset($_SESSION["username"])){
 
                 // Aggiungi il link all'immagine selezionata
                 const postId = this.getAttribute('data-post-id');
-                viewCommentsBtn.setAttribute('href', 'template/commenti.php?postId=' + postId);
+                viewCommentsBtn.setAttribute('href', 'commenti.php?postId=' + postId);
 
                 // Mostra la finestra modale
                 imageDetailsModal.show();

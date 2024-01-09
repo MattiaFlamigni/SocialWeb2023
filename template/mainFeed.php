@@ -48,7 +48,7 @@ if (count($templateParams["posts"]) > 0) {
                             
                             
                         </form>
-                        <form action="template/commenti.php" method="GET">
+                        <form action="commenti.php" method="GET">
                             <button type="submit" aria-label="Commenti" class="btn">
                                 <em class="far fa-comment px-4 py-1"></em>
                             </button>
