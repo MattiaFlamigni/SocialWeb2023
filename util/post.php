@@ -104,7 +104,7 @@ function image_url($id) {
 
 function propic_url($id) {
 	$g = glob(PIC_DIR . "/$id.*");
-	if (is_null($g)) {
+	if (count($g) == 0) {
 		return PIC_DIR . '/user.jpg';
 	}
 	return $g[0];
