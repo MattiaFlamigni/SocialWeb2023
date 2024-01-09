@@ -14,10 +14,10 @@ foreach ($searchResults as $row) {
                     <div class="card-body">';
                     
                     if($row["username"] &&  $profilePicURL = $dbh->getProPic($row["username"])){
-                        echo '<img src="' . propic_url($profilePicURL) . '" class="img-fluid w-75 rounded-circle" alt="User Image">';
+                        echo '<img src="' . propic_url($profilePicURL) . '" class=" rounded-circle" alt="User Image" width="50" height="50">';
                         
                     }else{
-                        echo '<img src="profile_pic/user.jpg" class="img-fluid w-75 rounded-circle" alt="">';
+                        echo '<img src="profile_pic/user.jpg" class=" rounded-circle" alt=""  width="50" height="50">';
                     }
                     
 
