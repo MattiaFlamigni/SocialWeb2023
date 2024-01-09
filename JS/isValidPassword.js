@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
             //document.getElementById("registrazioneBtn").disabled = false;
         } else {
             passwordResult.innerHTML = "";  // Resetta il messaggio se la password è valida
-            //document.getElementById("registrazioneBtn").classList.remove("disabled");     
+            document.getElementById("registrazioneBtn").classList.remove("disabled");     
         }
     });
 });
