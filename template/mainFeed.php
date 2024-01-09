@@ -10,7 +10,18 @@ if (count($templateParams["posts"]) > 0) {
             <div class="container-fluid mt-3">
                 <div class="rounded-top border bg-body-tertiary col-12 col-md-7 mx-auto">
                     <!-- Utente che ha condiviso la foto -->
-                    <img src="<?php echo propic_url($dbh->getProPic($post["username"])); ?>" class="rounded-circle " alt="utente" width="50" height="50">
+                    <?php
+                    if($profilePicURL = $dbh->getProPic($post["username"])){
+                        echo '<img src="' . propic_url($profilePicURL) . '" class=" rounded-circle" alt="User Image" width="50" height="50">';
+                        
+                    }else{
+                        echo '<img src="profile_pic/user.jpg" class=" rounded-circle" alt=""  width="50" height="50">';
+                    }
+
+                    ?>
+
+
+                    
                     <?php echo($post["username"]) ?>
                 </div>
                 <div class="">
