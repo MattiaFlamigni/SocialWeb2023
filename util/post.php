@@ -107,11 +107,29 @@ function upload_image($id, $ext, $bytes) {
 	fclose($newImage);
 }
 
-function upload_propic($id, $ext, $bytes) {
+/*function upload_propic($id, $ext, $bytes) {
 	$newImage = fopen(PIC_DIR . "/$id.$ext", "w");
 	fwrite($newImage, $bytes);
 	fclose($newImage);
+}*/
+
+function upload_propic($id, $ext, $bytes) {
+    $filePath = PIC_DIR . "/$id.$ext";
+    $newImage = fopen($filePath, "w");
+
+    if ($newImage === false) {
+        die("Unable to open file for writing: $filePath");
+    }
+
+    $result = fwrite($newImage, $bytes);
+
+    if ($result === false) {
+        die("Error writing to file: $filePath");
+    }
+
+    fclose($newImage);
 }
+
 
 function image_url($id) {
 	return glob(UPLOAD_DIR . "/$id.*")[0];
