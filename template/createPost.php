@@ -26,8 +26,8 @@ require_once 'util/post.php';
 require_once './bootstrap.php';
 require_once 'util/post.php';
 
-if (!empty($_POST)) {
-	$error = post_form_error();
+if (!empty($_FILES["image"])) {
+	$error = propic_form_error();
 	if (empty($error)) {
 		$id = new_image_id();
 		$ext = preg_replace('/^.+\\./', '', $_FILES['image']['name']);

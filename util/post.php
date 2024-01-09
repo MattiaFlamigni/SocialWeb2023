@@ -70,6 +70,21 @@ function post_form_error() {
 	}
 }
 
+function propic_form_error() {
+	$imageValidity = post_image_error();
+
+	if (empty($imageValidity)) {
+		return '';
+	} else {
+		$error = '<ul>';
+		if (!empty($imageValidity)) {
+			$error .= '<li>' . $imageValidity . '</li>';
+		}
+		$error .= '</ul>';
+		return $error;
+	}
+}
+
 function new_image_id() {
 	$files = scandir(UPLOAD_DIR);
 	for ($i = 0; $i < count($files); $i++) {

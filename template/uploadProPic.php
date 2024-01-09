@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col mt-3">
-			<form action="uploadProPic.php" method="post" enctype="multipart/form-data">
+			<form action="uploadProPic.php" method="POST" enctype="multipart/form-data">
 				<label class="form-label" for="image"> Scegli un'immagine </label>
 				<div class="input-group mb-3">
 					<input type="file" class="form-control" name="image" id="image" accept="image/*">
@@ -22,12 +22,14 @@ require_once './bootstrap.php';
 require_once 'util/post.php';
 
 
-if (!empty($_POST)) {
-	$error = post_form_error();
+if (!empty($_FILES['image'])) {
+	
+	$error = propic_form_error();
 	if (empty($error)) {
 		$id =  new_propic_id();
 		$ext = preg_replace('/^.+\\./', '', $_FILES['image']['name']);
 		$fileContent = file_get_contents($_FILES['image']['tmp_name']);
+
 
 		upload_propic($id, $ext, $fileContent);
 		$dbh->uploadProPic($id, $_SESSION['username']);
