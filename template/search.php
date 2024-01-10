@@ -32,10 +32,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Aggiungi un gestore per l'evento di input sulla casella di ricerca
     document.getElementById("search-input").addEventListener("input", function () {
         // Ottieni il valore digitato dall'utente
-        var userInput = this.value;
+        let userInput = this.value;
 
         // Fai una richiesta al server per ottenere i suggerimenti
-        var xhr = new XMLHttpRequest();
+        let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 // Aggiorna il contenuto dei suggerimenti con la risposta del server
